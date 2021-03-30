@@ -1,0 +1,13 @@
+.logo--tmdb {
+  text-align: end;
+  width: 22%;
+
+  &__text {
+    font-size: .8em;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
