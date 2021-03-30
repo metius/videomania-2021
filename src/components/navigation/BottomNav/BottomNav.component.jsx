@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faFilm, faTv, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import './BottomNav.styles.scss';
 
 const BottomNav = () => {
@@ -7,31 +9,31 @@ const BottomNav = () => {
     <ul className="bottom-nav__container">
       <a href="/" className="bottom-nav__item">
         <li className="bottom-nav__icon">
-          <i className="fas fa-home"></i>
+          <FontAwesomeIcon icon={faHome} />
           <span className="bottom-nav__text">Home</span>
         </li>
       </a>
       <a href="card-page.html" className="bottom-nav__item">
         <li className="bottom-nav__icon">
-          <i className="fas fa-film"></i>
+          <FontAwesomeIcon icon={faFilm} />
           <span className="bottom-nav__text">Movies</span>
         </li>
       </a>
       <a href="tv.html" className="bottom-nav__item">
         <li className="bottom-nav__icon">
-          <i className="fas fa-tv"></i>
+          <FontAwesomeIcon icon={faTv} />
         <span className="bottom-nav__text">TV</span>
         </li>
       </a>
       <a href="sign-in.html" className="bottom-nav__item">
         <li className="bottom-nav__icon">
-          <i className="fas fa-user-alt"></i>
+          <FontAwesomeIcon icon={faUser} />
           <span className="bottom-nav__text">Profile</span>
         </li>
       </a>
       <a href="/search.html" className="bottom-nav__item">
         <li className="bottom-nav__icon">
-          <i className="fas fa-search"></i>
+          <FontAwesomeIcon icon={faSearch} />
           <span className="bottom-nav__text">Search</span>
         </li>
       </a>
