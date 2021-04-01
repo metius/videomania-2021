@@ -2,9 +2,9 @@ import React from 'react';
 import './HorizontalList.styles.scss';
 
 const HorizontalList = () => {
-  return() {
+  return(
     <div></div>
-  }
+  )
 }
 
 export default HorizontalList;
