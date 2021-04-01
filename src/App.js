@@ -4,35 +4,39 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header.component';
 import BottomNav from './components/navigation/BottomNav/BottomNav.component';
 
-import HomePage from './pages/Home.page';
-import MoviesPage from './pages/Movies.page';
-import TvShowsPage from './pages/TvShows.page';
-import ProfilePage from './pages/Profile.page';
-import ItemPage from './pages/Item.page';
-import SearchPage from './pages/Search.page';
+import HomePage from './pages/Home/Home.page';
+import MoviesPage from './pages/Movies/Movies.page';
+import TvShowsPage from './pages/TvShows/TvShows.page';
+import ProfilePage from './pages/Profile/Profile.page';
+import ItemPage from './pages/Item/Item.page';
+import SearchPage from './pages/Search/Search.page';
+import NotFoundPage from './pages/NotFound/NotFound.page';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/item/:id">
+        <Route exact path="/item/:id">
           <ItemPage />
         </Route>
-        <Route path="/movies">
+        <Route exact path="/movies">
           <MoviesPage />
         </Route>
-        <Route path="/tv-shows">
+        <Route exact path="/tv-shows">
           <TvShowsPage />
         </Route>
-        <Route path="/profile">
+        <Route exact path="/profile">
           <ProfilePage />
         </Route>
-        <Route path="/search">
+        <Route exact path="/search">
           <SearchPage />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact>
+          <NotFoundPage />
         </Route>
       </Switch>
       
