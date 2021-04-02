@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import StarIcon from '../../StarIcon/StarIcon.component';
 
 import { getPicturePath } from '../../../utils/utilities';
 import {XXS_POSTER, S_POSTER, M_POSTER} from '../../../utils/tmdb_constants';
 import './ListCard.styles.scss';
+import FavourtiteIcon from '../../StarIcon/StarIcon.component';
 
 const ListCard = ({data}) => {
   const poster = getPicturePath(data.poster_path, XXS_POSTER);
@@ -14,6 +16,7 @@ const ListCard = ({data}) => {
     <div className='card'>
       <Link to={`item/${id}`}>
       <img className="card__poster" src={poster} alt={title} />
+      <StarIcon />
       {/*           
       <div className="card__favourite">
         <a href="#">

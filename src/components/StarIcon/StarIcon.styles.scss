@@ -1,0 +1,11 @@
+.card-favourite {
+  position: absolute;
+  /* z-index: -2; */
+  top: .2em;
+  right: .2em;
+  // color: rgba(255,255,255,1 );
+  color: var(--secondary);
+  font-size: 1.5em;
+
+  cursor: pointer;
+}
