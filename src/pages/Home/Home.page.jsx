@@ -13,10 +13,10 @@ const TvOnAirNow = withFetch(HorizontalList, TV_ON_AIR_NOW);
 const HomePage = () => {
   return(
     <main>
-      <MoviePopular />
-      <TvPopular />
-      <MovieOutNow  />
-      <TvOnAirNow />
+      <MoviePopular title="Popular Movies"/>
+      <TvPopular title="Popular Tv Shows"/>
+      <MovieOutNow  title="At the Theaters"/>
+      <TvOnAirNow title="Tv Shows On Air"/>
     </main>
   )
 }

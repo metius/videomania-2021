@@ -22,8 +22,8 @@ const HorizontalList = (props) => {
   const list = props.data.results;
 
   return(
-    <div className='grid'>
-      <h2 className="hz-list__title">What's popular</h2>
+    <div className='list-grid'>
+      <h2 className="list-grid__title">{props.title}</h2>
       {
         list.map(item => <ListCard data={item} key={item.id} />)
       }

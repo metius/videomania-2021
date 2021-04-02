@@ -2,12 +2,15 @@
 
 /* variables */
 :root {
-  /* TMDB style */
-  --primary: #0D253F;
-  --primary-rgb: 13, 37, 63;
+  --primary: #0D253F; 
+  --secondary: #FDFFFC;
   --primary_shade1: #153c66;
   --primary_shade1-rgb: 21, 60, 102;
-  --secondary: #FDFFFC;
+
+  --title-white-rgb: rgba(255,255,255,.5);
+  --btn-primary: #f9dc5c;
+  /* 
+  --primary-rgb: 13, 37, 63;
   --secondary-rgb: rgb(253, 255, 252);
   --tertiary: #F71735;
   --tertiary-rgb: rgb(247, 23, 53);
@@ -15,9 +18,9 @@
   --extra1-rgb: rgb(85, 156, 173);
   --extra2: #FFFBFF;
   --extra2-rgb: rgb(255, 251, 255);
-  --btn-primary: #f9dc5c;
   --placeholder1: #C2EABD;
-  --placeholder2: #ed254e;
+  --placeholder2: #ed254e; 
+  */
 
   --gutter: 20px;
 } 
