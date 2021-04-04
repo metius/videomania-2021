@@ -3,8 +3,8 @@ header {
   border-bottom: 1px solid rgba(255,255,255,.5 );
 
   // temporary disable for mobile wrapper
-  // position: fixed;
-  // top: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1000000;
 }

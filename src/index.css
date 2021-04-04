@@ -44,9 +44,9 @@ a:focus {
 }
 
 body {
-  /* temporary change color for test mobile wrapper
+  /* temporary change color for test mobile wrapper */
   background-color: var(--primary);
-  color: var(--secondary); */
+  color: var(--secondary);
   background-color: var(--primary_shade1);
 }
 
@@ -82,7 +82,7 @@ h4{
 }
 
 /* temporary wrapper for mobile version */
-#root {
+/* #root {
   max-width: 320px;
   height: 568px;
   border: 2px solid black;
@@ -92,4 +92,4 @@ h4{
   background-color: var(--primary);
   color: var(--secondary);
 
-}
+} */

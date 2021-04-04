@@ -1,9 +1,9 @@
 .bottom-nav {
   // change the positioning settings for test wrapper
-  // position: fixed;
-  // bottom: 0;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  // position: absolute;
+  // bottom: 0;
   width: 100%;
   background-color: var(--primary_shade1);
   border-top: 1px solid rgba(255,255,255,.5 );

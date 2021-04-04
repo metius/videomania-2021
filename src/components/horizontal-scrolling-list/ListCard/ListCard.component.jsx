@@ -16,13 +16,10 @@ const ListCard = ({data}) => {
     <div className='card'>
       <Link to={`item/${id}`}>
       <img className="card__poster" src={poster} alt={title} />
-      <StarIcon />
-      {/*           
-      <div className="card__favourite">
-        <a href="#">
-          <i className="far fa-star"></i>
-        </a>
-      </div> */}
+      {/* 
+        Component for add to favourite - need to re-design
+
+      <StarIcon /> */}
       
       {/* <div className="card__title-box">
         <h4 className="card__title">{title}</h4>
