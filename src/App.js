@@ -17,27 +17,13 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route exact path="/item/:id">
-          <ItemPage />
-        </Route>
-        <Route exact path="/movies">
-          <MoviesPage />
-        </Route>
-        <Route exact path="/tv-shows">
-          <TvShowsPage />
-        </Route>
-        <Route exact path="/profile">
-          <ProfilePage />
-        </Route>
-        <Route exact path="/search">
-          <SearchPage />
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact>
-          <NotFoundPage />
-        </Route>
+        <Route exact path="/item/:id" component={ItemPage} />
+        <Route exact path="/movies" component={MoviesPage} />
+        <Route exact path="/tv-shows" component={TvShowsPage} />
+        <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/search" component={SearchPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact component={NotFoundPage} />
       </Switch>
       
       {/* <Footer /> */}
