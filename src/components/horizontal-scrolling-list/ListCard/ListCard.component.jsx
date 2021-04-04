@@ -7,14 +7,16 @@ import {XXS_POSTER, S_POSTER, M_POSTER} from '../../../utils/tmdb_constants';
 import './ListCard.styles.scss';
 import FavourtiteIcon from '../../StarIcon/StarIcon.component';
 
-const ListCard = ({data}) => {
+const ListCard = ({data, type}) => {
   const poster = getPicturePath(data.poster_path, XXS_POSTER);
   const title = data.name;
   const id = data.id;
 
+  // console.log(data);
+
   return(
     <div className='card'>
-      <Link to={`item/${id}`}>
+      <Link to={`${type}/${id}`}>
       <img className="card__poster" src={poster} alt={title} />
       {/* 
         Component for add to favourite - need to re-design

@@ -19,15 +19,14 @@ const HorizontalList = (props) => {
   if(props.data.length === 0) return null;
   
   const list = props.data.results;
-  // console.log(props);
-  //console.log(list);
+  const type = props.type;
 
   return(
     <div className='list'>
       <h2 className="list__title">{props.title}</h2>
       <section className="list__wrapper">
       {
-        list.map(item => <ListCard data={item} key={item.id} />)
+        list.map(item => <ListCard data={item} key={item.id} type={type} />)
       }
       </section>
     </div>
