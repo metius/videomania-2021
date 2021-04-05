@@ -1,7 +1,8 @@
 import React from 'react';
 import './ItemCard.styles.scss';
 
-const ItemCard = () => {
+const ItemCard = (props) => {
+  console.log("crad props", props);
   return(
     <article></article>
   )

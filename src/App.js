@@ -20,8 +20,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/movie/:id" component={MovieCardPage} type='movie' />
-        <Route exact path="/tv/:id" component={TvCardPage} />
         <Route exact path="/movies" component={MoviesPage} />
+        <Route exact path="/tv/:id" component={TvCardPage} />
         <Route exact path="/tv-shows" component={TvShowsPage} />
         <Route exact path="/profile" component={ProfilePage} />
         <Route exact path="/search" component={SearchPage} />
