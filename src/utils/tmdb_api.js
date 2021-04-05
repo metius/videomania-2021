@@ -10,4 +10,4 @@ export const TV_ON_AIR_NOW = `${TMDB_BASE_LINK}tv/on_the_air?api_key=${TMDB_API}
 // https://api.themoviedb.org/3/movie/508442?api_key=8079c8ef46a65047553ab8e45b990c53&append_to_response=images,videos,credits&include_image_language=en,null
 export const getMovieDetails = (movie) => `${TMDB_BASE_LINK}movie/${movie}?api_key=${TMDB_API}&append_to_response=images,videos,credits&include_image_language=en,null`;
 
-
+export const getTvShowDetails = (tvshow) => `${TMDB_BASE_LINK}tv/${tvshow}?api_key=${TMDB_API}&append_to_response=images,videos,credits&include_image_language=en,null`;;
