@@ -6,7 +6,7 @@ import { TYPE_MOVIE } from '../../utils/constants'
 
 const MovieCardPage = (props) => {
   const Card = withFetch(ItemCard, getMovieDetails(props.match.params.id));
-  console.log(props);
+
   return(
     <Card type={TYPE_MOVIE} />
   )

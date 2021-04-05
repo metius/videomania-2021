@@ -1,0 +1,31 @@
+// to see if applicable or not - leave it for now 
+main {
+  margin: 2.7em 0 2em 0;
+}
+
+.item-page {
+
+  &__header {
+    position: relative;
+  }
+
+  &__img {
+    max-width: 100%;
+    background-size: cover;    
+    position: relative;
+  }
+
+  &__title-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    color: white;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 1rem;
+    padding: .1em .3em
+  }
+}
