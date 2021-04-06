@@ -88,6 +88,20 @@ h4{
   font-size: .9em;
 }
 
+.section-grid {
+  display: grid;
+  grid-template-columns: 1em 1fr 1em;
+  padding-top: .7em;
+}
+
+.section-grid > * {
+  grid-column: 2 / -2;
+}
+
+.section-grid > .full {
+  grid-column: 1 / -1;
+}
+
 /* temporary wrapper for mobile version */
 /* #root {
   max-width: 320px;

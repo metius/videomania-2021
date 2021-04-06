@@ -1,0 +1,30 @@
+.list {
+  grid-template-columns: 1em 1fr 1em;
+  display: grid;
+  padding-top: .7em;
+
+  &__title {
+    border-bottom: 1px solid var(--title-white-rgb);
+    display: inline-block;
+    margin-bottom: .6em;
+
+    font-size: .9em;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    align-items: flex-start;
+
+    scrollbar-width: none;
+  }
+}
+
+.list > * {
+  grid-column: 2 / -2;
+}
+
+.list > .full {
+  grid-column: 1 / -1;
+}

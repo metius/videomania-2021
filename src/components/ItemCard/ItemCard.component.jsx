@@ -1,9 +1,11 @@
 import React from 'react';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
-import {S_BACKDROP, M_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
-import { TYPE_MOVIE, TYPE_TVSHOW } from '../../utils/constants';
+import {M_BACKDROP} from '../../utils/tmdb_constants';
+// import {S_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
+import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST } from '../../utils/constants';
 
 import StarIcon from '../StarIcon/StarIcon.component';
+import ScrollingList from '../horizontal-scrolling-list/ScrollingList/ScrollingList.component';
 
 import './ItemCard.styles.scss';
 
@@ -54,7 +56,7 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
           </div>
         </div>
       
-        <div className="item-page__main">
+        <div className="item-page__main section-grid">
           <div className="item-page__info">
             <span>{`${data.vote_average}/10`}</span>
             <span>{`${runtime} min`}</span>
@@ -65,6 +67,13 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
             <h2 className="section-title">Overview</h2>
             <p>{data.overview}</p>
           </div>
+
+          {/* <div className="item-page__cast section-grid">
+            <h2 className="section-title full">Cast</h2>
+            <section className="hz-list--cast full"></section> 
+          </div> */}
+          <ScrollingList list={data.credits.cast} title='Cast' type={TYPE_CAST} />
+
         </div>
       </article>
     </main>
