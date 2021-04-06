@@ -47,7 +47,6 @@ body {
   /* temporary change color for test mobile wrapper */
   background-color: var(--primary);
   color: var(--secondary);
-  background-color: var(--primary_shade1);
 }
 
 li {
@@ -79,6 +78,14 @@ h2{
 }
 h4{
   font-size: 1.1em;
+}
+
+.section-title {
+  border-bottom: 1px solid var(--title-white-rgb);
+  display: inline-block;
+  margin-bottom: .6em;
+
+  font-size: .9em;
 }
 
 /* temporary wrapper for mobile version */

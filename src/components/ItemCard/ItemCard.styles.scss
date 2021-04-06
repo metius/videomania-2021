@@ -1,7 +1,21 @@
 // to see if applicable or not - leave it for now 
 main {
-  margin: 2.7em 0 2em 0;
+  margin: 3em 0 2em 0;
 }
+
+// .grid {
+//   grid-template-columns: 1em 1fr 1em;
+//   display: grid;
+//   padding-top: .7em;
+// }
+
+// .grid > * {
+//   grid-column: 2 / -2;
+// }
+
+// .grid > .full {
+//   grid-column: 1 / -1;
+// }
 
 .item-page {
 
@@ -27,5 +41,37 @@ main {
   &__title {
     font-size: 1rem;
     padding: .1em .3em
+  }
+
+  &__main {
+    grid-template-columns: 1em 1fr 1em;
+    display: grid;
+    padding-top: .7em;
+  }
+
+  &__main > * {
+    grid-column: 2 / -2;
+  }
+  
+  &__main > .full {
+    grid-column: 1 / -1;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: .5em;
+    color: var(--title-white-rgb);
+  }
+  
+  &__info span {
+    margin-right: 1.5em;
+  }
+
+  &__overview {
+    font-size: .9em;
+    margin-bottom: .5em;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPicturePath } from '../../utils/utilities';
+import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
 import {S_BACKDROP, M_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
 import { TYPE_MOVIE, TYPE_TVSHOW } from '../../utils/constants';
 
@@ -27,12 +27,21 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
   const backdropImg = getPicturePath(data.backdrop_path, M_BACKDROP);
   
   let title;
+  let runtime;
+  let releaseYear;
+
   if( type === TYPE_MOVIE) {
     title = data.title;
+    runtime = data.runtime;
+    releaseYear = getYearFromDateString(data.release_date);
   } else if ( type === TYPE_TVSHOW ) {
     title = data.name;
+    runtime = data.episode_run_time[0];
+    releaseYear = getYearFromDateString(data.first_air_date);
   } else {
     title = ' ';
+    runtime = 0;
+    releaseYear = '---';
   }
   return(
     <main>
@@ -42,6 +51,19 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
           <StarIcon />
           <div className="item-page__title-box">
             <h2 className="item-page__title">{title}</h2>
+          </div>
+        </div>
+      
+        <div className="item-page__main">
+          <div className="item-page__info">
+            <span>{`${data.vote_average}/10`}</span>
+            <span>{`${runtime} min`}</span>
+            <span>{`${releaseYear}`}</span>          
+          </div>
+
+          <div className="item-page__overview">
+            <h2 className="section-title">Overview</h2>
+            <p>{data.overview}</p>
           </div>
         </div>
       </article>
