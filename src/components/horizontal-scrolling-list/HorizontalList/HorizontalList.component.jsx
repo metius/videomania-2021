@@ -1,5 +1,6 @@
 import React from 'react';
 import ListCard from '../ListCard/ListCard.component';
+import {TYPE_CAST} from '../../../utils/constants';
 import './HorizontalList.styles.scss';
 
 const HorizontalList = (props) => {
@@ -20,11 +21,12 @@ const HorizontalList = (props) => {
   
   const list = props.data.results;
   const type = props.type;
+  const title = props.title;
 
   return(
     <div className='list'>
-      <h2 className="list__title">{props.title}</h2>
-      <section className="list__wrapper">
+      <h2 className={type === TYPE_CAST ? 'list__title full' : 'list__title'}>{title}</h2>
+      <section className={type === TYPE_CAST ? 'list__wrapper full' : 'list__wrapper'}>
       {
         list.map(item => <ListCard data={item} key={item.id} type={type} />)
       }

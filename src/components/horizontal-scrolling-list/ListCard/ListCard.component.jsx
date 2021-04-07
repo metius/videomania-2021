@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import StarIcon from '../../StarIcon/StarIcon.component';
 
-import { getPicturePath } from '../../../utils/utilities';
-import {XXS_POSTER, M_PROFILE} from '../../../utils/tmdb_constants';
+import { getPicturePath, getProfilePic } from '../../../utils/utilities';
+import {XXS_POSTER, M_PROFILE, S_PROFILE} from '../../../utils/tmdb_constants';
 import './ListCard.styles.scss';
 
 import {TYPE_CAST, TYPE_MOVIE, TYPE_TVSHOW} from '../../../utils/constants';
@@ -11,7 +11,8 @@ import {TYPE_CAST, TYPE_MOVIE, TYPE_TVSHOW} from '../../../utils/constants';
 const ListCard = ({data, type}) => {
   let picture;
   if(type === TYPE_CAST) {
-    picture = getPicturePath(data.profile_path, M_PROFILE);
+    picture = getProfilePic(data.profile_path, S_PROFILE);
+    console.log(picture);
   } else {
     picture = getPicturePath(data.poster_path, XXS_POSTER);
 
@@ -24,6 +25,7 @@ const ListCard = ({data, type}) => {
   return(
     <div className='card'>
       <Link to={`${type}/${id}`}>
+      {/* I should consider to create an IMAGE component to handle different sizes, types (cast, posters, etc), also fpr better handle the responsive  TO DO */}
       <img className="card__poster" src={picture} alt={title} />
       {/* 
         Component for add to favourite - need to re-design
