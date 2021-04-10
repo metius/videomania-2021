@@ -5,14 +5,12 @@ import {M_BACKDROP} from '../../utils/tmdb_constants';
 import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST, TYPE_MEDIA } from '../../utils/constants';
 
 import StarIcon from '../StarIcon/StarIcon.component';
-import ScrollingList from '../horizontal-scrolling-list/ScrollingList/ScrollingList.component';
 
 import HorizontalList from '../horizontal-scrolling-list/HorizontalList/HorizontalList.component';
 
 import './ItemCard.styles.scss';
 
 const ItemCard = ({data, err, isError, isFetching, type}) => {
-  console.log("card props", data);
 
   if(isError) {
     //need to handle the error
@@ -74,7 +72,7 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
           {/* <ScrollingList list={data.credits.cast} title='Cast' type={TYPE_CAST} /> */}
           <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
           {/* Render horizontal list type=MEDIA */}
-          <ScrollingList list={data.videos.results} title='Videos' type={TYPE_MEDIA} />
+          <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
             
         </div>
       </article>
