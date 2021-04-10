@@ -38,4 +38,62 @@
     font-size: .8rem;
     /* flex: 1; */
   }
+
+  &__cast {
+    
+    &--empty {
+      width: 45px; 
+      border: 2px solid black; 
+      /*padding: 20px;*/
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      background-color: rgb(200,200,200);
+    }
+    
+    &--image {
+      display: inline-block;
+      width: 100%;
+      font-size: 0;
+      line-height: 0;
+      vertical-align: middle;
+      background-size: 75%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-image: url("https://www.svgrepo.com/show/5357/user.svg");
+    }
+
+    &--image-inner {
+      display: block;
+      height: 0;
+      padding-top: 100%;
+    }
+  }
+}
+
+
+
+.div-container {
+  width: 200px; 
+  border: 2px solid black; 
+  /*padding: 20px;*/
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.image {
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-size: 75%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("https://www.svgrepo.com/show/5357/user.svg");
+}
+
+.image-inner {
+    display: block;
+    height: 0;
+    padding-top: 100%;
 }

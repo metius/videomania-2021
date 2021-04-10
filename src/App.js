@@ -23,7 +23,8 @@ function App() {
         <Route exact path="/movies" component={MoviesPage} />
         <Route exact path="/tv/:id" component={TvCardPage} />
         <Route exact path="/tv-shows" component={TvShowsPage} />
-        <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/cast/:id" component={ProfilePage} />
+        <Route exact path="/cast" component={ProfilePage} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/" component={HomePage} />
         <Route exact component={NotFoundPage} />

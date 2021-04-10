@@ -2,10 +2,12 @@ import React from 'react';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
 import {M_BACKDROP} from '../../utils/tmdb_constants';
 // import {S_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
-import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST } from '../../utils/constants';
+import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST, TYPE_MEDIA } from '../../utils/constants';
 
 import StarIcon from '../StarIcon/StarIcon.component';
 import ScrollingList from '../horizontal-scrolling-list/ScrollingList/ScrollingList.component';
+
+import HorizontalList from '../horizontal-scrolling-list/HorizontalList/HorizontalList.component';
 
 import './ItemCard.styles.scss';
 
@@ -68,12 +70,12 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
             <p>{data.overview}</p>
           </div>
 
-          {/* <div className="item-page__cast section-grid">
-            <h2 className="section-title full">Cast</h2>
-            <section className="hz-list--cast full"></section> 
-          </div> */}
-          <ScrollingList list={data.credits.cast} title='Cast' type={TYPE_CAST} />
-
+          {/* Render horizontal list type=CAST */}
+          {/* <ScrollingList list={data.credits.cast} title='Cast' type={TYPE_CAST} /> */}
+          <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
+          {/* Render horizontal list type=MEDIA */}
+          <ScrollingList list={data.videos.results} title='Videos' type={TYPE_MEDIA} />
+            
         </div>
       </article>
     </main>
