@@ -47,14 +47,10 @@ const HorizontalList = (props) => {
   }
 
   return(
-    <div className='list section-grid'>
+    <div className={`list section-grid ${type === TYPE_MEDIA ? 'list--media' : ''} `} >
       <h2 className={type === TYPE_CAST || type === TYPE_MEDIA ? 'section-title full' : 'section-title'}>{title}</h2>
       <section className={type === TYPE_CAST || type === TYPE_MEDIA ? 'list__wrapper full' : 'list__wrapper'}>
         {cards}
-        {
-
-        /* list.map(item => <ListCard data={item} key={item.id} type={type} />) */
-        }
       </section>
     </div>
   )
