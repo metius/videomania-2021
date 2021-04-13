@@ -73,6 +73,10 @@
     }
   }
 
+  &__modal-wrapper {
+    cursor: pointer;
+  }
+
   &__play-icon {
     position: absolute;
     top: 35%;
