@@ -5,13 +5,16 @@ import { faStar as fasStar} from '@fortawesome/free-solid-svg-icons';
 
 import './StarIcon.styles.scss';
 
-const StarIcon = () => {
+const StarIcon = (props) => {
   return(
-    <div className="card-favourite">
-      <FontAwesomeIcon icon={farStar} />
-      {/* <i className="far fa-star"></i> */}
-      {/*onClick: <i class="fas fa-star"></i> */}
-    </div>
+    <>
+      {
+        props.isFavourite ?
+          <FontAwesomeIcon icon={fasStar} />
+        :
+          <FontAwesomeIcon icon={farStar} />
+      }    
+    </>
   )
 }
 
