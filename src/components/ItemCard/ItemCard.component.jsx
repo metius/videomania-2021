@@ -26,8 +26,7 @@ class ItemCard extends Component {
     //In here I will read the state of isFavourite from localStorage/DB/etc...
   }
 
-  setFavourite(e) {
-    // e.preventDefault();
+  setFavourite() {
     console.log("Change status of icon: ", this.state.isFavourite)
     this.setState({
       isFavourite: !this.state.isFavourite
@@ -99,10 +98,8 @@ class ItemCard extends Component {
               <p>{data.overview}</p>
             </div>
 
-            {/* Render horizontal list type=CAST */}
-            {/* <ScrollingList list={data.credits.cast} title='Cast' type={TYPE_CAST} /> */}
             <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
-            {/* Render horizontal list type=MEDIA */}
+
             <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
               
           </div>

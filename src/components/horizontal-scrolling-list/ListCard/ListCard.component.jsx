@@ -8,7 +8,7 @@ const ListCard = (props) => {
   const id = props.data.id;
 
   return(
-    <div className='card'>
+    <div className={`card card__${props.type}`} >
       <Link to={`/${props.type}/${id}`}>
         {props.children}
       </Link>

@@ -43,7 +43,13 @@
     /* flex: 1; */
   }
 
+  &__name {
+    font-size: .6rem;
+  }
+
   &__cast {
+
+    max-width: 3em;
     
     &--empty {
       width: 45px; 

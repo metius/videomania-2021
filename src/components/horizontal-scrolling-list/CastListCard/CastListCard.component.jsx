@@ -6,21 +6,23 @@ import ListCard from '../ListCard/ListCard.component';
 const CastListCard = ({data, type}) => {
   
   if(data.profile_path === null) {
+    console.table(data);
     return(
-      // passing the children
-      // render props.children --> need to re-think also all the other components - fucking composition
+
       <ListCard type={type} data={data}>
         <div className="card__cast--empty">  
           <span className="card__cast--image">
             <span className="card__cast--image-inner"></span>
           </span>
         </div>
+        <h4 className='card__name'>{data.name}</h4>
       </ListCard>
     )
   } else {
     return(
       <ListCard type={type} data={data} >
         <img className="card__poster" src={getPicturePath(data.profile_path, S_PROFILE)} alt={data.title} />
+        <h4 className='card__name'>{data.name}</h4>
       </ListCard>
     )
   }
