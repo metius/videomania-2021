@@ -30,14 +30,15 @@ class MediaCard extends Component {
     
     // https://appleple.github.io/react-modal-video/
     return(
-      <div className='card card__modal-wrapper'>
+      <div className='card'>
         <ModalVideo channel={site.toLowerCase()} isOpen={this.state.isOpen} videoId={videoId} onClose={() => this.setState({isOpen: false})} />
-        <div onClick={this.openModal}>
+        <div className='card__media' onClick={this.openModal}>
           <img className="card__poster card__poster--media" src={getYouTubeThumbsHD(videoId)} alt={name} />
           <div className="card__play-icon">                 
             <FontAwesomeIcon icon={faYoutube} />
           </div>
         </div>
+        <h4 className='card__name'>{name}</h4>
       </div>
     )
   }

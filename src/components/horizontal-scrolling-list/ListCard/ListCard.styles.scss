@@ -79,14 +79,19 @@
     }
   }
 
-  &__modal-wrapper {
+  &__media {
     cursor: pointer;
+
+    & img {
+      position: relative;
+      display: block;
+    }
   }
 
   &__play-icon {
     position: absolute;
-    top: 35%;
-    right: 45%;
+    top: 30%;
+    right: 43%;
   }
 
 }
