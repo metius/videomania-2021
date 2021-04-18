@@ -1,17 +1,18 @@
 .logo--tmdb {
   text-align: end;
-  width: 22%;
+  width: 24%;
 
   &__text {
     font-size: .8em;
-    background-color: red;
     vertical-align: top;
-    line-height: 0.2;
+    // line-height: 0.2;
   }
 
   &__img {
     width: 100%;
     max-width: 100%;
-    font-size: .5em;
+    // font-size: .5em;
+    display: block;
+    vertical-align: top;
   }
 }

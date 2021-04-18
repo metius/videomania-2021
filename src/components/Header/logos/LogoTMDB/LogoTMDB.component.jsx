@@ -1,11 +1,12 @@
 import React from 'react';
+import {ReactComponent as TMDBLogo} from '../../../../assets/img/tmdb_logo_horz.svg';
 import './LogoTMDB.styles.scss';
 
 const LogoTMDB = () => {
   return(
     <div className="logo--tmdb">
-      <img src="assets/img/tmdb_logo_horz.svg" className="logo--tmdb__img" alt="The Movie DB Logo" />
-      {/* <span className="logo--tmdb__text">Powered by</span> */}
+      <span className="logo--tmdb__text">Powered by</span>
+      <TMDBLogo className="logo--tmdb__img" alt="The Movie DB Logo"/>
     </div>
   )
 }
