@@ -48,8 +48,8 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
   return(
     <main>
       <article className="item-page">
-        <div className="item-page__header">
-          <img src={backdropImg} alt={data.name} className="item-page__img" />
+        <div className="item-page__header img-shadow">
+          <img src={backdropImg} alt={data.name} className="item-page__img " />
           <StarIcon />
           <div className="item-page__title-box">
             <h2 className="item-page__title">{title}</h2>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ModalVideo from 'react-modal-video'
-// import ModalVideo from '../../ModalVideo/ModalVideo.component';
 import {getYouTubeThumbsHD} from '../../../utils/utilities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faYoutube} from '@fortawesome/free-brands-svg-icons';
@@ -29,7 +28,7 @@ class MediaCard extends Component {
     const name = this.props.data.name;
     const site = this.props.data.site;
     
-
+    // https://appleple.github.io/react-modal-video/
     return(
       <div className='card card__modal-wrapper'>
         <ModalVideo channel={site.toLowerCase()} isOpen={this.state.isOpen} videoId={videoId} onClose={() => this.setState({isOpen: false})} />

@@ -6,27 +6,31 @@ main {
 .item-page {
 
   &__header {
-    position: relative;
+    // position: relative;
   }
 
   &__img {
     max-width: 100%;
-    background-size: cover;    
+    background-size: contain;    
     position: relative;
+    display: block;
   }
 
   &__title-box {
     position: absolute;
     bottom: 0;
     right: 0;
+    padding: 0;
+    margin: 0;
     background-color: rgba(0,0,0,.5);
     color: white;
     width: 100%;
+    display: inline-block;
   }
 
   &__title {
     font-size: 1rem;
-    padding: .1em .3em
+    padding: .1em 1em
   }
 
   &__info {
