@@ -14,26 +14,30 @@ import ProfilePage from './pages/Profile/Profile.page';
 import SearchPage from './pages/Search/Search.page';
 import NotFoundPage from './pages/NotFound/NotFound.page';
 
+import {Authprovider} from './firebase/context';
+
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/movie/:id" component={MovieCardPage} type='movie' />
-        <Route exact path="/movies" component={MoviesPage} />
-        <Route exact path="/tv/:id" component={TvCardPage} />
-        <Route exact path="/tv-shows" component={TvShowsPage} />
-        <Route exact path="/cast/:id" component={ProfilePage} />
-        <Route exact path="/cast" component={ProfilePage} />
-        <Route exact path="/search" component={SearchPage} />
-        <Route exact path="/" component={HomePage} />
-        <Route exact component={NotFoundPage} />
-      </Switch>
-      
-      {/* <Footer /> */}
+    <Authprovider>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/movie/:id" component={MovieCardPage} type='movie' />
+          <Route exact path="/movies" component={MoviesPage} />
+          <Route exact path="/tv/:id" component={TvCardPage} />
+          <Route exact path="/tv-shows" component={TvShowsPage} />
+          <Route exact path="/cast/:id" component={ProfilePage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact component={NotFoundPage} />
+        </Switch>
+        
+        {/* <Footer /> */}
 
-      <BottomNav />
-    </div>
+        <BottomNav />
+      </div>
+    </Authprovider>
   );
 }
 
