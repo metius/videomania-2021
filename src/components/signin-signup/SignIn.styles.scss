@@ -1,0 +1,175 @@
+/* Sign in form */
+.sign-in-page{
+  min-height: 65vh;
+  padding: 1.5em 0 1em 0;
+}
+
+.login-form {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.login-form__title {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.login-form__wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.login-form__input {
+  margin-bottom: 1em;
+  background-color: rgba(var(--primary_shade1-rgb), 0.8);
+  color:rgb(253, 255, 252);
+  font-size: 1rem;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.5 );
+  padding: .4em .2em;
+  width: 100%;
+}
+
+
+.login-form__input:focus {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid var(--btn-primary);
+}
+
+.login-form__btn {
+  border-radius: 10px;
+  font-size: 1.4rem;
+  padding: .3em 3em;
+  background-color: var(--btn-primary);
+  border: 2px solid var(--primary_shade1);
+  color:var(--primary);
+  width: 100%;
+  transition: all .2s;
+  outline: none;
+  margin-bottom: .5em;
+}
+
+.login-form__btn:active {
+  transform: translateY(3px);
+}
+
+.login-form__links {
+  width: 100%;
+  color:rgba(255,255,255,.5 );
+  font-size: .8rem;
+  margin: 1em 0;
+  
+  display: flex;
+  justify-content: space-between;
+
+  /* background-color: wheat;
+  color: black; */
+}
+
+/* checkbox style START */
+
+.chkbox-wrapper {
+  display: block;
+  position: relative;
+  padding-left: 2.2em;
+  padding-top: .4em;
+  font-size: .8rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  height: 1.2em;
+  width: 1.2em;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color 
+MORE for DSKTOP STYLE - TO BE MOVED DOWN TO media queries*/
+/* .chkbox-wrapper:hover input ~ .checkmark {
+  background-color: #ed254e;
+} */
+
+/* When the checkbox is checked, add a blue background */
+/* .chkbox-wrapper input:checked ~ .checkmark {
+  background-color: #2196F3;
+} */
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.chkbox-wrapper input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.chkbox-wrapper .checkmark:after {
+  left: .35em;
+  bottom: .3em;
+  /* top: 5px; */
+  width: 5px;
+  height: 10px;
+  border: solid #0D253F;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* checkbox style END*/
+
+a.login-form__new-pswd {
+  color:rgba(255,255,255,.5 );
+  font-size: .8rem;
+  display: inline-block;
+  margin: 0;
+  padding-top: .4em;
+}
+
+.login-form_socials {
+  width: 100%;
+}
+
+.login-form_socials--title {
+  color:rgba(255,255,255,.5 );
+  font-size: .8rem;
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+.login-form__socials_btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.4rem;
+}
+
+.login-form__socials_btns > a {
+  border: 1px solid rgba(255,255,255,.5 );
+  border-radius: 400%;
+  padding: .5em;
+  opacity: .5;
+}
+
+.login-form__socials_btns > a:active {
+  opacity: 1;
+}

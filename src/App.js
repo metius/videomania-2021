@@ -14,6 +14,7 @@ import ProfilePage from './pages/Profile/Profile.page';
 import SearchPage from './pages/Search/Search.page';
 import NotFoundPage from './pages/NotFound/NotFound.page';
 
+//providers
 import {Authprovider} from './firebase/context';
 
 function App() {
