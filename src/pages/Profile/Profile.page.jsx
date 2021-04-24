@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import firebase from 'firebase';
 import {FirebaseAuth} from 'react-firebaseui';
 import {AuthContext} from '../../firebase/context';
-import {Redirect} from 'react-router-dom';
-import SignIn from '../../components/signin-signup/SignIn.component';
+import ProfileInfo from '../../components/user-forms/ProfileInfo.component';
+import SignInForm from '../../components/user-forms/SignInForm.component';
 
 
 const ProfilePage = () => {
@@ -27,14 +27,14 @@ const ProfilePage = () => {
       {
         !!user ? (
           //In this case user exsists or he is signed in - so will show profile page
-          //as a test I can redirect to home
-          <Redirect to={{pathname: "/profile"}} />
+          
+          <ProfileInfo />
+          //<Redirect to={{pathname: "/profile"}} />
           //It will actually be the Profile component
           //where we will be display basic info form firebase/firestore
-          //<Profile />
         ) : (
           //here I will render sign-in forms (components)
-          <SignIn />
+          <SignInForm />
             /* <div>
           
             <p>Please Sign In</p>

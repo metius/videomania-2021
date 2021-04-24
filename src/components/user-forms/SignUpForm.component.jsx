@@ -2,15 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import './SignIn.styles.scss';
+import './UserForms.styles.scss';
 
-class SignIn extends React.Component {
+class SignUpForm extends React.Component {
   constructor() {
     super();
 
     this.state = {
       email: '',
       password: '',
+      confirmPassword: '',
       error: null,
     }
 
@@ -19,8 +20,8 @@ class SignIn extends React.Component {
 
   onChangeHandler(e) {
     const {name, value} = e.currentTarget;
-
-    
+    console.log(e.currentTarget)
+        
     this.setState({[name]: value})
   }
 
@@ -28,8 +29,11 @@ class SignIn extends React.Component {
   return(
     <div className="sign-in-page">
       <div className="login-form">
-        <h3 className="login-form__title">Sign In</h3>
+        <h3 className="login-form__title">Sign Up</h3>
         {/* need to add an extra piece for shows errors */}
+        {this.state.error !== null && 
+          <div className="login-form__errors">{this.state.error}</div>
+        }
         <form className="login-form__wrapper">
           <input 
             type="email" 
@@ -48,29 +52,19 @@ class SignIn extends React.Component {
             id="userPassword"
             onChange={(event) => this.onChangeHandler(event)}  
           />
-
-          <div className="login-form__links">
-            <label className="chkbox-wrapper">Remember me
-              <input type="checkbox" />
-              <span className="checkmark"></span>
-            </label>
-  
-            <Link to="/passwordReset" className="login-form__new-pswd">
-              Forgot Password?
-            </Link>
-          </div>
-
-          <div className="login-form__signup">
-            <span>Don't have an account? Register </span>
-            <Link to="/signUp" >
-              here
-            </Link>
-          </div>
-
-          <button className="login-form__btn">Sign In</button>
+          <input 
+            type="password" 
+            className="login-form__input" 
+            placeholder="Confirm Password" 
+            name="confirmPassword"
+            id="userConfirmPassword"
+            onChange={(event) => this.onChangeHandler(event)}  
+          />
+          
+          <button className="login-form__btn">Register</button>
 
           <div className="login-form__socials">
-            <p className="login-form_socials--title">Or Sing In Using</p>
+            <p className="login-form_socials--title">Or Sing Up Using</p>
             <div className="login-form__socials_btns">
               <a href="">
                 <FontAwesomeIcon icon={faGoogle} />
@@ -89,4 +83,4 @@ class SignIn extends React.Component {
   )}
 }
 
-export default SignIn;
+export default SignUpForm;

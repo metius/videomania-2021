@@ -3,7 +3,7 @@ import {auth} from './config';
 
 export const AuthContext = React.createContext();
 
-export const Authprovider = ({children}) => {
+export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
