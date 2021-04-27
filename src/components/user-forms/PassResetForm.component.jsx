@@ -8,8 +8,7 @@ class PassResetForm extends React.Component {
 
     this.state = {
       email: '',
-      password: '',
-      rememberMe: false,
+      emailBeenSent: 'false',
       error: null,
     }
 
@@ -17,11 +16,8 @@ class PassResetForm extends React.Component {
   }
 
   onChangeHandler(e) {
-    // const {name, value} = e.currentTarget;
-    const target = e.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    console.log(e.currentTarget)
+    const {name, value} = e.currentTarget;
+    console.log(name,value)
         
     this.setState({[name]: value})
   }
@@ -34,6 +30,10 @@ class PassResetForm extends React.Component {
         {/* need to add an extra piece for shows errors */}
         {this.state.error !== null && 
           <div className="login-form__errors">{this.state.error}</div>
+        }
+        {/* confirmation message that the email has been sent */}
+        {this.state.emailBeenSent && 
+          <div className="login-form__errors">An email has been sent!</div>
         }
         <form className="login-form__wrapper">
           <input 

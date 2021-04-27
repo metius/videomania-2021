@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import './UserForms.styles.scss';
+import SignInWithSocials from './SignInWithSocials.component';
 
 class SignUpForm extends React.Component {
   constructor() {
@@ -63,21 +64,10 @@ class SignUpForm extends React.Component {
           
           <button className="login-form__btn">Register</button>
 
-          <div className="login-form__socials">
-            <p className="login-form_socials--title">Or Sing Up Using</p>
-            <div className="login-form__socials_btns">
-              <a href="">
-                <FontAwesomeIcon icon={faGoogle} />
-              </a>
-              <a href="">
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a href="">
-                <FontAwesomeIcon icon={faTwitter} />              
-              </a>
-            </div>
-          </div>
         </form>
+          
+        <SignInWithSocials />
+
       </div>
     </div>
   )}

@@ -1,26 +1,13 @@
 import React, {useContext} from 'react';
 import firebase from 'firebase';
 import {FirebaseAuth} from 'react-firebaseui';
-import {AuthContext} from '../../firebase/context';
+import {UserContext} from '../../firebase/UserProvider';
 import ProfileInfo from '../../components/user-forms/ProfileInfo.component';
 import SignInForm from '../../components/user-forms/SignInForm.component';
 
 
 const ProfilePage = () => {
-  const {user} = useContext(AuthContext);
-
-  const uiConfig = {
-    signInFlow: 'popup',
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    ],
-    callbacks: {
-      signInSuccess: () => false,
-    },
-  };
+  const {user} = useContext(UserContext);
   
   return(
     <main>
@@ -28,7 +15,7 @@ const ProfilePage = () => {
         !!user ? (
           //In this case user exsists or he is signed in - so will show profile page
           
-          <ProfileInfo />
+          <ProfileInfo user={user}/>
           //<Redirect to={{pathname: "/profile"}} />
           //It will actually be the Profile component
           //where we will be display basic info form firebase/firestore

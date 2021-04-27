@@ -18,11 +18,11 @@ import SearchPage from './pages/Search/Search.page';
 import NotFoundPage from './pages/NotFound/NotFound.page';
 
 //providers
-import {AuthProvider} from './firebase/context';
+import {UserProvider} from './firebase/UserProvider';
 
 function App() {
   return (
-    <AuthProvider>
+    <UserProvider>
       <div className="App">
         <Header />
         <Switch>
@@ -43,7 +43,7 @@ function App() {
 
         <BottomNav />
       </div>
-    </AuthProvider>
+    </UserProvider>
   );
 }
 

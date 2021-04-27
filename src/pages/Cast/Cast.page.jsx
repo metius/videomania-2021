@@ -1,7 +1,9 @@
 import React from 'react';
 
 const CastPage = () => {
-  <> Cast Page </>
+  return(
+    <main>Cast Page</main>
+  )
 }
 
 export default CastPage;
