@@ -1,10 +1,11 @@
-import {auth, googleProvider, twitterProvider} from './firebase';
+import {auth} from './firebase';
 import firebase from 'firebase';
 
 export const signInWithEmailAndPassword = () => {}
 
 export const signInWithGoogle = () => {
-  auth.signInWithPopup(googleProvider);
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider);
 }
 export const signInWithFacebook = () => {
   const facebookProvider = new firebase.auth.FacebookAuthProvider();
@@ -23,11 +24,12 @@ export const signInWithFacebook = () => {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
-      //console.log(`Detected errors. error coded: ${errorCode} - error message: ${errorMessage} - email: ${email} - crederntial: ${credential}`)
+      console.log(`Detected errors. error coded: ${errorCode} - error message: ${errorMessage} - email: ${email} - crederntial: ${credential}`)
       //console.log(errorMessage);
       console.table(error);
     })
 }
 export const signInWithTwitter = () => {
-  auth.signInWithPopup(twitterProvider);
+  const provider = new firebase.auth.TwitterAuthProvider();
+  auth.signInWithPopup(provider);
 }

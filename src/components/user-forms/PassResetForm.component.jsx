@@ -32,7 +32,7 @@ class PassResetForm extends React.Component {
           <div className="login-form__errors">{this.state.error}</div>
         }
         {/* confirmation message that the email has been sent */}
-        {this.state.emailBeenSent && 
+        {!this.state.emailBeenSent && 
           <div className="login-form__errors">An email has been sent!</div>
         }
         <form className="login-form__wrapper">
@@ -47,6 +47,7 @@ class PassResetForm extends React.Component {
           />                  
           
           <button className="login-form__btn">Send link</button>
+        </form>
 
           <div className="login-form__signup">
             <span></span>
@@ -54,7 +55,6 @@ class PassResetForm extends React.Component {
               Back to Sign In page
             </Link>
           </div>
-        </form>
       </div>
     </div>
   )}

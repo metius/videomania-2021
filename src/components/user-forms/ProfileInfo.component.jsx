@@ -5,6 +5,7 @@ import './UserForms.styles.scss';
 
 const ProfileInfo = () => {
   const user = useContext(UserContext);
+  console.log(user);
   return(
     <div className='profile'>
       Profile component

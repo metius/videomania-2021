@@ -10,6 +10,7 @@ class SignUpForm extends React.Component {
     super();
 
     this.state = {
+      displayName: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -36,6 +37,15 @@ class SignUpForm extends React.Component {
           <div className="login-form__errors">{this.state.error}</div>
         }
         <form className="login-form__wrapper">
+          <input 
+            type="text" 
+            className="login-form__input" 
+            placeholder="Display name" 
+            name="displayName"
+            value={this.state.displayName}
+            id="userDisplayName"
+            onChange={(event) => this.onChangeHandler(event)}  
+          />
           <input 
             type="email" 
             className="login-form__input" 
