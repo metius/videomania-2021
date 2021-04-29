@@ -16,17 +16,18 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const generateUserDocument = async (user, additionalData) => {
-  console.log(`In generateUserDocument`);
+  console.log('ciao:', user.uid);
+  console.log(JSON.stringify(user));
   if(!user) return;
 
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
 
   if(!snapshot.exists) {
-    const {email, displayname} = user;
+    const {email, displayName} = user;
     try {
       await userRef.set({
-        displayname,
+        displayName,
         email,
         ...additionalData
       });

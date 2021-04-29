@@ -20,16 +20,15 @@ class SignUpForm extends React.Component {
     this.createUserWithEmailAndPasswordHandler = this.createUserWithEmailAndPasswordHandler.bind(this);
   }
 
-  createUserWithEmailAndPasswordHandler(event, email, password) {
-    console.log('In the handler');
+  async createUserWithEmailAndPasswordHandler(event, email, password) {
     event.preventDefault();
 
     try {
       console.log(`in the try`);
-      auth.createUserWithEmailAndPassword(email, password)
-       .then(user => generateUserDocument(user.user, user.user.displayName))
-       .then(result => console.log(`Result: ${result}`))
-      
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      console.log(`User from auth: `);
+      Object.entries(user).forEach(keyValuePair => {console.log("  ",...keyValuePair)})
+       //generateUserDocument(user, user.displayName);             
       
     } catch(err) {
       this.setState({
