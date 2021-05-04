@@ -1,7 +1,11 @@
 import {auth} from './firebase';
 import firebase from 'firebase';
 
-export const signInWithEmailAndPassword = () => {}
+export const signInWithEmailAndPassword = (event, email, password) => {
+  event.preventDefault();
+  
+  return auth.signInWithEmailAndPassword(email, password);
+}
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();

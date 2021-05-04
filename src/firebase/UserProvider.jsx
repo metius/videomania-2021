@@ -9,11 +9,6 @@ export const UserProvider = ({children}) => {
   useEffect(() => {
     auth.onAuthStateChanged(setUser);
   }, []);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     setUser(user);
-  //   });
-  // })
 
   return(
     <UserContext.Provider value={{ user }}>
