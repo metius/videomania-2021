@@ -6,8 +6,9 @@ import ProfileInfo from '../../components/user-forms/ProfileInfo.component';
 import SignInForm from '../../components/user-forms/SignInForm.component';
 
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   const {user} = useContext(UserContext);
+  console.log('Profile page props:', props)
   
   return(
     <main>

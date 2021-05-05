@@ -7,7 +7,7 @@ import './UserForms.styles.scss';
 const SignInWithSocials = () => {
   return(
     <div className="login-form__socials">
-      <p className="login-form_socials--title">Or Sing In Using</p>
+      <p className="login-form__socials--title">Or Sing In Using</p>
       <div className="login-form__socials_btns">
         <button onClick={() => {signInWithGoogle();}}>
           <FontAwesomeIcon icon={faGoogle} />

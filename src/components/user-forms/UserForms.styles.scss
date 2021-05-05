@@ -7,69 +7,106 @@
 .login-form {
   margin: 0 auto;
   width: 85%;
-}
 
-.login-form__title {
-  font-size: 1.8rem;
-  text-align: center;
-}
+  &__title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
 
-.login-form__wrapper {
-  width: 100%;
-  margin: 0 auto;
-}
+  &__wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
 
-.login-form__input {
-  margin-bottom: 1em;
-  background-color: rgba(var(--primary_shade1-rgb), 0.8);
-  color:rgb(253, 255, 252);
-  font-size: 1rem;
-  border: 0;
-  border-bottom: 1px solid rgba(255,255,255,.5 );
-  padding: .4em .2em;
-  width: 100%;
-}
+  &__input {
+    margin-bottom: 1em;
+    background-color: rgba(var(--primary_shade1-rgb), 0.8);
+    color:rgb(253, 255, 252);
+    font-size: 1rem;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.5 );
+    padding: .4em .2em;
+    width: 100%;
+  }
 
+  &__input:focus {
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid var(--btn-primary);
+  }
 
-.login-form__input:focus {
-  outline: none;
-  border: 0;
-  border-bottom: 1px solid var(--btn-primary);
-}
+  &__btn {
+    border-radius: 10px;
+    font-size: 1.4rem;
+    padding: .3em 3em;
+    background-color: var(--btn-primary);
+    border: 2px solid var(--primary_shade1);
+    color:var(--primary);
+    width: 100%;
+    transition: all .2s;
+    outline: none;
+    margin-bottom: .5em;
+  
+    &:disabled {
+      background-color: var(--btn-disabled);
+      cursor: not-allowed;
+    }
 
-.login-form__btn {
-  border-radius: 10px;
-  font-size: 1.4rem;
-  padding: .3em 3em;
-  background-color: var(--btn-primary);
-  border: 2px solid var(--primary_shade1);
-  color:var(--primary);
-  width: 100%;
-  transition: all .2s;
-  outline: none;
-  margin-bottom: .5em;
+    &:active {
+      transform: translateY(3px);
+    }
+  }
 
-  &:disabled {
-    background-color: var(--btn-disabled);
-    cursor: not-allowed;
+  &__links {
+    width: 100%;
+    color:rgba(255,255,255,.5 );
+    font-size: .8rem;
+    margin: 1em 0;
+    
+    display: flex;
+    justify-content: space-between;
+  
+    /* background-color: wheat;
+    color: black; */
+  }
+
+  &__socials {
+    width: 100%;
+
+    &--title {
+      color:rgba(255,255,255,.5 );
+      font-size: .8rem;
+      text-align: center;
+      margin: 1.5em 0;
+    }
+
+    &_btns {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.4rem;
+
+      & > a {
+        border: 1px solid rgba(255,255,255,.5 );
+        border-radius: 400%;
+        padding: .5em;
+        opacity: .5;
+      }
+
+      & > a:active {
+        opacity: 1;
+      }
+    }
   }
 }
 
-.login-form__btn:active {
-  transform: translateY(3px);
-}
 
-.login-form__links {
-  width: 100%;
+a.login-form__new-pswd {
   color:rgba(255,255,255,.5 );
   font-size: .8rem;
-  margin: 1em 0;
-  
-  display: flex;
-  justify-content: space-between;
-
-  /* background-color: wheat;
-  color: black; */
+  display: inline-block;
+  margin: 0;
+  padding-top: .4em;
 }
 
 /* checkbox style START */
@@ -85,14 +122,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
 
-.chkbox-wrapper input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  & input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
 }
 
 .checkmark {
@@ -141,40 +178,3 @@ MORE for DSKTOP STYLE - TO BE MOVED DOWN TO media queries*/
 }
 
 /* checkbox style END*/
-
-a.login-form__new-pswd {
-  color:rgba(255,255,255,.5 );
-  font-size: .8rem;
-  display: inline-block;
-  margin: 0;
-  padding-top: .4em;
-}
-
-.login-form_socials {
-  width: 100%;
-}
-
-.login-form_socials--title {
-  color:rgba(255,255,255,.5 );
-  font-size: .8rem;
-  text-align: center;
-  margin: 1.5em 0;
-}
-
-.login-form__socials_btns {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.4rem;
-}
-
-.login-form__socials_btns > a {
-  border: 1px solid rgba(255,255,255,.5 );
-  border-radius: 400%;
-  padding: .5em;
-  opacity: .5;
-}
-
-.login-form__socials_btns > a:active {
-  opacity: 1;
-}

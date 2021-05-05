@@ -41,12 +41,6 @@ class SignInForm extends React.Component {
           errMessage: err.message
         })
       });
-    
-
-    // this.setState({
-    //   email: '',
-    //   password: '',
-    // })
   }
   
 

@@ -1,0 +1,6 @@
+· need to modify Profile page in order to rendere Profile || signIn || signUp
+
+
+· re-eneable user creation in firestore and se how to properly pass the data (displayName)
+· also wants to add creationDate in firestore 
+
