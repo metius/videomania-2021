@@ -13,7 +13,8 @@ class SignUpForm extends React.Component {
       email: '',
       password: '',
       confirmPassword: '',
-      error: null,
+      error: false,
+      errMessage: ''
     }
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -23,26 +24,31 @@ class SignUpForm extends React.Component {
   async createUserWithEmailAndPasswordHandler(event, email, password, displayName) {
     event.preventDefault();
 
-    try {
-      console.log(`in the try`);
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      //console.log(`User from auth: ${user}`);
-      //console.log(`User from auth: |||| down here`);
-      //Object.entries(user).forEach(keyValuePair => {console.log("  ",...keyValuePair)})
+    try {      
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);      
       generateUserDocument(user, {displayName: displayName});             
+      
+      this.setState({
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        error: false, 
+        errMessage: ''
+      })
       
     } catch(err) {
       this.setState({
-        error: err
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        error: true,
+        errMessage: err.message,
       })
     }
 
-    this.setState({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    })
+    
   }
   
   onChangeHandler(e) {

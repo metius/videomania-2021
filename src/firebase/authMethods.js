@@ -1,6 +1,15 @@
 import {auth} from './firebase';
 import firebase from 'firebase';
 
+export const setPersistence = (rememberMe) => {
+  console.log("Value of rememberMe flag:", rememberMe)
+  if(!rememberMe) {
+    return auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  } else {
+    return auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  }
+}
+
 export const signInWithEmailAndPassword = (event, email, password) => {
   event.preventDefault();
   

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import SignInWithSocials from './SignInWithSocials.component';
-import {signInWithEmailAndPassword} from '../../firebase/authMethods';
+import {signInWithEmailAndPassword, setPersistence} from '../../firebase/authMethods';
 
 import './UserForms.styles.scss';
 
@@ -30,28 +30,36 @@ class SignInForm extends React.Component {
     this.setState({[name]: value})
   }
 
-  signInWithEmailAndPasswordHandler(e, email, password) {
-    signInWithEmailAndPassword(e, email, password)
+  signInWithEmailAndPasswordHandler(e, email, password, rememberMe) {
+    setPersistence(rememberMe)
+      .catch(err => {
+        console.log("Error setting persistence ");
+      });
+
+    signInWithEmailAndPassword(e, email, password, rememberMe)
       .catch(err => {
         console.log('Error hanlder in sign in:', err.message);
         this.setState({
           email: '',
           password: '',
           error: true,
-          errMessage: err.message
+          errMessage: err.message, 
+          rememberMe: false,
         })
       });
   }
   
 
   render() {
+    const {email, password, error, errMessage, rememberMe} = this.state;
+
     return(
       <div className="sign-in-page">
         <div className="login-form">
           <h3 className="login-form__title">Sign In</h3>
           {/* need to add an extra piece for shows errors */}
-          {this.state.error && 
-            <div className="login-form__errors">{this.state.errMessage}</div>
+          {error && 
+            <div className="login-form__errors">{errMessage}</div>
           }
           <form className="login-form__wrapper">
             <input 
@@ -59,7 +67,7 @@ class SignInForm extends React.Component {
               className="login-form__input" 
               placeholder="Email" 
               name="email"
-              value={this.state.email}
+              value={email}
               id="userEmail"
               onChange={(event) => this.onChangeHandler(event)}  
             />
@@ -68,7 +76,7 @@ class SignInForm extends React.Component {
               className="login-form__input" 
               placeholder="Password" 
               name="password"
-              value={this.state.password}
+              value={password}
               id="userPassword"
               onChange={(event) => this.onChangeHandler(event)}  
             />
@@ -78,6 +86,7 @@ class SignInForm extends React.Component {
                 <input 
                   type="checkbox" 
                   name="rememberMe"
+                  value={rememberMe}
                   onChange={(event) => this.onChangeHandler(event)}  
                 />
                 <span className="checkmark"></span>
@@ -89,7 +98,7 @@ class SignInForm extends React.Component {
             </div>
             <button 
               className="login-form__btn"
-              onClick={event => {this.signInWithEmailAndPasswordHandler(event, this.state.email, this.state.password)}}
+              onClick={event => {this.signInWithEmailAndPasswordHandler(event, email, password, rememberMe)}}
             >
               Sign In
             </button>
