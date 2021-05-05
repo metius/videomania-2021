@@ -99,8 +99,11 @@ class SignUpForm extends React.Component {
           />
           
           <button 
-            className="login-form__btn"
+            className={'login-form__btn ' + (this.state.password !== this.state.confirmPassword || this.state.password.length === 0 ? 'btn__disable' : '')}
             onClick={event => {this.createUserWithEmailAndPasswordHandler(event, this.state.email, this.state.password)}}
+            disabled={
+              this.state.password !== this.state.confirmPassword || this.state.password.length === 0 ? true : false
+            }
           >
             Register
           </button>
