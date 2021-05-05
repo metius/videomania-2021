@@ -17,6 +17,9 @@ export const firestore = firebase.firestore();
 
 export const generateUserDocument = async (user, additionalData) => {
   console.log('ciao:', user.uid);
+  console.log('additional data:', additionalData);
+
+  const createdAt = new Date();
   console.log(JSON.stringify(user));
   if(!user) return;
 
@@ -24,11 +27,11 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await userRef.get();
 
   if(!snapshot.exists) {
-    const {email, displayName} = user;
+    const {email} = user;
     try {
-      await userRef.set({
-        displayName,
+      await userRef.set({        
         email,
+        createdAt,
         ...additionalData
       });
 
