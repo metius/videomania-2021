@@ -33,7 +33,7 @@ class SignInForm extends React.Component {
   signInWithEmailAndPasswordHandler(e, email, password, rememberMe) {
     setPersistence(rememberMe)
       .catch(err => {
-        console.log("Error setting persistence ");
+        console.log(err.message);
       });
 
     signInWithEmailAndPassword(e, email, password, rememberMe)

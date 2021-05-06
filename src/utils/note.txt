@@ -1,6 +1,8 @@
-· need to modify Profile page in order to rendere Profile || signIn || signUp
+· verified email form Twitter authentication
+· verify contextApi use
+· get more properties for Profile Page (not urgent at the moment)
 
 
-· re-eneable user creation in firestore and se how to properly pass the data (displayName)
-· also wants to add creationDate in firestore 
+
+· Facebook authenitcation not working right now 
 

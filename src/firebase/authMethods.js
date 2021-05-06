@@ -18,11 +18,11 @@ export const signInWithEmailAndPassword = (event, email, password) => {
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider);
+  return auth.signInWithPopup(provider);
 }
 export const signInWithFacebook = () => {
   const facebookProvider = new firebase.auth.FacebookAuthProvider();
-  auth
+  return auth
     .signInWithPopup(facebookProvider)
     .then(function(result){
       let token =  result.credential.accessToken;
@@ -44,5 +44,5 @@ export const signInWithFacebook = () => {
 }
 export const signInWithTwitter = () => {
   const provider = new firebase.auth.TwitterAuthProvider();
-  auth.signInWithPopup(provider);
+  return auth.signInWithPopup(provider);
 }

@@ -36,7 +36,7 @@ class SignUpForm extends React.Component {
         error: false, 
         errMessage: ''
       })
-      
+
     } catch(err) {
       this.setState({
         displayName: '',
@@ -47,8 +47,6 @@ class SignUpForm extends React.Component {
         errMessage: err.message,
       })
     }
-
-    
   }
   
   onChangeHandler(e) {

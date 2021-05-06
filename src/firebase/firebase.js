@@ -20,7 +20,7 @@ export const generateUserDocument = async (user, additionalData) => {
   console.log('additional data:', additionalData);
 
   const createdAt = new Date();
-  console.log(JSON.stringify(user));
+  //console.log(JSON.stringify(user));
   if(!user) return;
 
   const userRef = firestore.doc(`users/${user.uid}`);

@@ -8,7 +8,7 @@ import SignInForm from '../../components/user-forms/SignInForm.component';
 
 const ProfilePage = (props) => {
   const {user} = useContext(UserContext);
-  console.log('Profile page props:', props)
+  //console.log('Profile page props:', props)
   
   return(
     <main>
