@@ -8,12 +8,11 @@ import SignInForm from '../../components/user-forms/SignInForm.component';
 
 const ProfilePage = (props) => {
   const {user} = useContext(UserContext);
-  //console.log('Profile page props:', props)
   
   return(
     <main>
       {
-        !!user ? (
+        user ? (
           //In this case user exsists or he is signed in - so will show profile page
           
           <ProfileInfo user={user}/>

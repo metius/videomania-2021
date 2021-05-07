@@ -5,9 +5,10 @@ import {useHistory} from 'react-router-dom';
 import './UserForms.styles.scss';
 
 const ProfileInfo = () => {
-  const user = useContext(UserContext); //will need to show info and manage logged in user
+  const {user} = useContext(UserContext); //will need to show info and manage logged in user
   let history = useHistory();
-  console.log(user);
+  // console.log(`User in profileInfo (from context): ${JSON.stringify(user)}`);
+  console.log(`User ID: ${user.uid} - Display name: ${user.displayName}`)
   return(
     <div className='profile'>
       Profile component
