@@ -12,21 +12,14 @@ const ProfilePage = (props) => {
   return(
     <main>
       {
-        user ? (
-          //In this case user exsists or he is signed in - so will show profile page
-          
+        user 
+        ? (
+          //In this case user exsists or he is signed in - so will show profile page          
           <ProfileInfo user={user}/>
-          //<Redirect to={{pathname: "/profile"}} />
-          //It will actually be the Profile component
-          //where we will be display basic info form firebase/firestore
-        ) : (
+        ) 
+        : (
           //here I will render sign-in forms (components)
           <SignInForm />
-            /* <div>
-          
-            <p>Please Sign In</p>
-            <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-          </div> */
         )
       }
     </main>

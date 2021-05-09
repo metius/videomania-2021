@@ -18,8 +18,7 @@ class PassResetForm extends React.Component {
   }
 
   onChangeHandler(e) {
-    const {name, value} = e.currentTarget;
-    console.log(`In the handler: ${name} - ${value}`)    
+    const {name, value} = e.currentTarget; 
     this.setState({[name]: value})
   }
 

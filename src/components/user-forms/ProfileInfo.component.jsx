@@ -6,8 +6,8 @@ import './UserForms.styles.scss';
 
 const ProfileInfo = () => {
   const {user} = useContext(UserContext); //will need to show info and manage logged in user
-  let history = useHistory();
-  // console.log(`User in profileInfo (from context): ${JSON.stringify(user)}`);
+  let history = useHistory(); //to redirect after sign out
+
   console.log(`User ID: ${user.uid} - Display name: ${user.displayName}`)
   return(
     <div className='profile'>
