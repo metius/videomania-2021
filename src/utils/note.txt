@@ -1,13 +1,13 @@
 HIGHLY IMPORTANT TASKS:
-
 · need to implement search
+· add query results (form API) to session storage and check before to query again (for performances)
+· add Favourite to local storage and profile when user is logged in
 
 MEDIUM IMPORTANT TASKS:
 · Facebook authentication not working right now 
 · customize password reset
 · need to add possibility to delete user (need to remember to trigger Firestore delete)
 · cast page needs to be review
-· add Favourite to local storage and profile when user is logged in
 
 LOW IMPORTANT TASKS:
 · get more properties for Profile Page (not urgent at the moment)
