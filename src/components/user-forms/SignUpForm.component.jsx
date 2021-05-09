@@ -26,32 +26,25 @@ class SignUpForm extends React.Component {
 
     try {      
       const {user} = await auth.createUserWithEmailAndPassword(email, password);      
-      generateUserDocument(user, {displayName: displayName});             
-      
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        error: false, 
-        errMessage: ''
-      })
+      generateUserDocument(user, {displayName: displayName});                   
 
     } catch(err) {
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+      this.setState({        
         error: true,
         errMessage: err.message,
       })
     }
+
+    this.setState({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
   }
   
   onChangeHandler(e) {
     const {name, value} = e.currentTarget;
-    //console.log(e.currentTarget)
         
     this.setState({[name]: value})
   }

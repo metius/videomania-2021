@@ -13,6 +13,7 @@ class SignInWithSocials extends React.Component {
     this.state = {
       user: null
     }    
+
   }
 
   handleSocialSignIn(e, socialSignIn) {
@@ -33,7 +34,7 @@ class SignInWithSocials extends React.Component {
       <div className="login-form__socials">
         <p className="login-form__socials--title">Or Sing In Using</p>
         <div className="login-form__socials_btns">
-          <button onClick={event => {this.handleSocialSignIn(event, signInWithGoogle)}}>
+          <button onClick={event => this.handleSocialSignIn(event, signInWithGoogle)}>
             <FontAwesomeIcon icon={faGoogle} />
           </button>
           <button onClick={event => {this.handleSocialSignIn(event, signInWithFacebook)}}>

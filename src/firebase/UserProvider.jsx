@@ -9,7 +9,6 @@ export const UserProvider = ({children}) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       generateUserDocument(user)
-        // .then(res => console.log(res))
         .then(user => setUser(user));
     })
   }, []);

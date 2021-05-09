@@ -16,8 +16,6 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const generateUserDocument = async (user, additionalData) => {
-  // console.log('ciao:', user.uid);
-  // console.log('additional data:', additionalData);
 
   const createdAt = new Date();
   console.log(`User in generate user document: ${JSON.stringify(user)}`);

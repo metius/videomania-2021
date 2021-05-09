@@ -31,12 +31,14 @@ class SignInForm extends React.Component {
   }
 
   signInWithEmailAndPasswordHandler(e, email, password, rememberMe) {
+    e.preventDefault();
+
     setPersistence(rememberMe)
       .catch(err => {
         console.log(err.message);
       });
 
-    signInWithEmailAndPassword(e, email, password, rememberMe)
+    signInWithEmailAndPassword(email, password, rememberMe)
       .catch(err => {
         console.log('Error hanlder in sign in:', err.message);
         this.setState({

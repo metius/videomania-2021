@@ -1,11 +1,16 @@
+HIGHLY IMPORTANT TASKS:
 
-· verify contextApi use
-· get more properties for Profile Page (not urgent at the moment)
+· need to implement search
 
-IMPORTANT: verify error on SignUp:
-
-index.js:1 Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
-    at SignUpForm (http://localhost:3000/static/js/main.chunk.js:4982:5)
-
+MEDIUM IMPORTANT TASKS:
 · Facebook authentication not working right now 
+· customize password reset
+· need to add possibility to delete user (need to remember to trigger Firestore delete)
+· cast page needs to be review
+· add Favourite to local storage and profile when user is logged in
+
+LOW IMPORTANT TASKS:
+· get more properties for Profile Page (not urgent at the moment)
+· create github gist about Firebase authentication and Firestore data flow
+
 
