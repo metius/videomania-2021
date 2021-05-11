@@ -1,6 +1,4 @@
 import React, {useContext} from 'react';
-import firebase from 'firebase';
-import {FirebaseAuth} from 'react-firebaseui';
 import {UserContext} from '../../firebase/UserProvider';
 import ProfileInfo from '../../components/user-forms/ProfileInfo.component';
 import SignInForm from '../../components/user-forms/SignInForm.component';
