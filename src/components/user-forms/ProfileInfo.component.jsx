@@ -10,12 +10,14 @@ const ProfileInfo = () => {
 
   console.log(`User ID: ${user.uid} - Display name: ${user.displayName}`)
   return(
-    <div className='profile'>
-      Profile component
-      <button className="login-form__btn" onClick={() => {
-        auth.signOut()
-          .then(() => history.push("/"))         
-      }}>Sign Out</button>      
+    <div className="profile-page">
+      <div className='profile'>
+        Profile component
+        <button className="login-form__btn" onClick={() => {
+          auth.signOut()
+            .then(() => history.push("/"))         
+        }}>Sign Out</button>      
+      </div>
     </div>
   )
 }

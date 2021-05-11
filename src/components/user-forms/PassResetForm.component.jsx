@@ -41,11 +41,7 @@ class PassResetForm extends React.Component {
 
   render() {
     return(
-      <div className="sign-in-page">
-      { !this.state.emailBeenSent 
-        ? 
-          <h2>Email sent. Please check your Inbox</h2>
-        :      
+      <div className="sign-in-page">       
           <div className="login-form">
             <h3 className="login-form__title">Reset your Password</h3>
             {/* need to add an extra piece for shows errors */}
@@ -56,7 +52,10 @@ class PassResetForm extends React.Component {
             {!this.state.emailBeenSent && 
               <div className="login-form__errors">An email has been sent!</div>
             }
-            <form className="login-form__wrapper">
+            <form 
+              className="login-form__wrapper"
+              onSubmit={this.handlePasswordReset}
+            >
               <input 
                 type="email" 
                 className="login-form__input" 
@@ -65,12 +64,8 @@ class PassResetForm extends React.Component {
                 value={this.state.email}
                 id="userEmail"
                 onChange={this.onChangeHandler}  
-              />                  
-              
-              <button 
-                className="login-form__btn"
-                onClick={this.handlePasswordReset}
-              >
+              />                                
+              <button className="login-form__btn">
                 Send link
               </button>
             </form>
@@ -81,8 +76,7 @@ class PassResetForm extends React.Component {
                   Back to Sign In page
                 </Link>
               </div>
-          </div>
-      }
+          </div>      
       </div>
   )}
 }

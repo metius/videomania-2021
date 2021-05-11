@@ -30,8 +30,10 @@ class SignInForm extends React.Component {
     this.setState({[name]: value})
   }
 
-  signInWithEmailAndPasswordHandler(e, email, password, rememberMe) {
-    e.preventDefault();
+  signInWithEmailAndPasswordHandler(event) {
+    event.preventDefault();
+
+    const {email, password, rememberMe} = this.state;
 
     setPersistence(rememberMe)
       .catch(err => {
@@ -50,7 +52,6 @@ class SignInForm extends React.Component {
         })
       });
   }
-  
 
   render() {
     const {email, password, error, errMessage, rememberMe} = this.state;
@@ -63,7 +64,10 @@ class SignInForm extends React.Component {
           {error && 
             <div className="login-form__errors">{errMessage}</div>
           }
-          <form className="login-form__wrapper">
+          <form 
+            className="login-form__wrapper"
+            onSubmit={this.signInWithEmailAndPasswordHandler}
+          >
             <input 
               type="email" 
               className="login-form__input" 
@@ -100,7 +104,6 @@ class SignInForm extends React.Component {
             </div>
             <button 
               className="login-form__btn"
-              onClick={event => {this.signInWithEmailAndPasswordHandler(event, email, password, rememberMe)}}
             >
               Sign In
             </button>

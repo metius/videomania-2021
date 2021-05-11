@@ -18,7 +18,7 @@ export const firestore = firebase.firestore();
 export const generateUserDocument = async (user, additionalData) => {
 
   const createdAt = new Date();
-  console.log(`User in generate user document: ${JSON.stringify(user)}`);
+  //console.log(`User in generate user document: ${JSON.stringify(user)}`);
   if(!user) return;
 
   const userRef = firestore.doc(`users/${user.uid}`);

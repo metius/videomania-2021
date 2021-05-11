@@ -20,8 +20,10 @@ class SignUpForm extends React.Component {
     this.createUserWithEmailAndPasswordHandler = this.createUserWithEmailAndPasswordHandler.bind(this);
   }
 
-  async createUserWithEmailAndPasswordHandler(event, email, password, displayName) {
+  async createUserWithEmailAndPasswordHandler(event) {
     event.preventDefault();
+
+    const {email, password, displayName} = this.state;
 
     try {      
       const {user} = await auth.createUserWithEmailAndPassword(email, password);      
@@ -59,7 +61,10 @@ class SignUpForm extends React.Component {
           {error !== null && 
             <div className="login-form__errors">{error}</div>
           }
-          <form className="login-form__wrapper">
+          <form 
+            className="login-form__wrapper"
+            onSubmit={this.createUserWithEmailAndPasswordHandler}
+          >
             <input 
               type="text" 
               className="login-form__input" 
@@ -99,7 +104,7 @@ class SignUpForm extends React.Component {
             
             <button 
               className={'login-form__btn ' + (password !== confirmPassword || password.length === 0 ? 'btn__disable' : '')}
-              onClick={event => {this.createUserWithEmailAndPasswordHandler(event, email, password, displayName)}}
+              // onClick={event => {this.createUserWithEmailAndPasswordHandler(event, email, password, displayName)}}
               disabled={
                 password !== confirmPassword || password.length === 0 ? true : false
               }
