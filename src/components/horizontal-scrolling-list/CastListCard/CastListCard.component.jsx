@@ -6,7 +6,7 @@ import ListCard from '../ListCard/ListCard.component';
 const CastListCard = ({data, type}) => {
   
   if(data.profile_path === null) {
-    console.table(data);
+    //console.table(data);
     return(
 
       <ListCard type={type} data={data}>
