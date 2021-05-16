@@ -39,21 +39,23 @@ export const generateUserDocument = async (user, additionalData) => {
   return getUserDocument(user.uid);
 }
 
-export const setFavouriteDocument = async (action, uid, itemId, type, favId) => {
-  if(!uid) return;
-  //step 0: ideally, since I read the data at the mounting of the application, I shouldn't have the need to do this. Favorites will be synced 
+export const getFavouriteDocument = (uid, itemId) => {
+  return firestore.collection('favourites').where("uid", "==", uid).where("itemid", "==", itemId).get();
+}
+
+export const setFavouriteDocument = async (uid, itemId, type) => {
+  if(!uid) return; //in the next release, a user NOT logged in will be redirect to Sign IN page and then back to it
+
   //step 1: get the snapshot of data
   const collection = firestore.collection('favourites');
   //step2: query the data for a match uid/id
-  collection.where("uid", "==", uid).where("itemid", "==", itemId)
+  return collection.where("uid", "==", uid).where("itemid", "==", itemId)
     .get()
     .then((querySnapshot) => {
       //console.log(`Checking query results: ${JSON.stringify(querySnapshot)}`);      
       if(!querySnapshot.empty) {
         //step2-a: if there is a match, we are removing the favourite -> go to remove
-        console.log("Not empty - remove");
         querySnapshot.forEach(doc => {
-          console.log(`Doc ID: ${doc.id}`)
           removeFavourite(doc.id)
             .catch(err => console.log(`Error while removing favourite: ${err.message}`))          
         });
@@ -66,23 +68,6 @@ export const setFavouriteDocument = async (action, uid, itemId, type, favId) => 
     })
     .catch(err => {console.log("Error retrieving document", err.message)})
 
-  // let docRef;
-  // if(action) { //action is true --> adding document (favourite)
-  //   try {
-  //     docRef = await addFavourite(uid, itemId, type);
-  //     console.log(`Added new favourite with ID ${docRef.id}`);
-  //   } catch(err) {
-  //     console.log(`Error while adding new favourite: ${err.message}`)
-  //   }
-  // } else {  //action is false --> removing document (favourite)
-  //   try {
-  //     docRef = removeFavourite(favId);
-  //     console.log(`Removed favourite with ID ${docRef.id}`);
-  //   } catch(err) {
-  //     console.log(`Error while removing favourite: ${err.message}`)
-  //   }
-  // }
-  // return getDocument(docRef.id, 'favourites');
 }
 
 const addFavourite = (uid, itemId, type) => {

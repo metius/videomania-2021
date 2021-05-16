@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {UserContext} from '../../firebase/UserProvider';
-import {setFavouriteDocument} from '../../firebase/firebase';
+import {getFavouriteDocument, setFavouriteDocument} from '../../firebase/firebase';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
 import {M_BACKDROP} from '../../utils/tmdb_constants';
 // import {S_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
@@ -11,46 +11,50 @@ import './ItemCard.styles.scss';
 
 class ItemCard extends Component {
 
-  static contextType = UserContext;
-
   constructor(props) {
     super(props);
 
     this.state = {
       isFavourite: false,
-      favId: null,
     }
 
     this.setFavourite = this.setFavourite.bind(this);
   }
 
-  componentDidMount() {
-    console.log("In componentDidMount", this.props)
-    this.setState({
-      isFavourite: false,//In here I will read the state of isFavourite from localStorage/DB/etc...
-    })
+  componentDidUpdate(prevProps) {
+    const {data} = this.props;
+    const {user} = this.context;
     
+    // console.log("In componentDidUpdate - data", data)
+    // console.log("In componentDidUpdate - user", user)
+
+    if(Object.keys(data).length > 0 ) {
+      if (data.id !== prevProps.data.id) {
+        getFavouriteDocument(user.uid, data.id)
+          .then((doc) => {
+            if(!doc.empty) {
+              console.log("Doc exsists (not empty")
+              this.setState({isFavourite: true})
+            }
+            else {
+              console.log("Doc ot exsists (empty)")
+              this.setState({isFavourite: false})
+            }
+          })
+          .catch(err => console.log("Error reading the data"))
+      }
+    }
   }
 
   setFavourite() {
     const {user} = this.context;
-    const {isFavourite, favId} = this.state;
+    const {isFavourite} = this.state;
     const {type, data} = this.props;
 
-    console.log("Change status of icon: ", this.state.isFavourite)
-    //console.log(`User in setFavourite: ${JSON.stringify(user)}`);
-    console.log(`User uid: ${user.uid}`)
-    //console.table(this.state);
-
-    //set favourite in LocalStorage (or Session Storage) -- 13/05: let0s keep it simple for now. Let's store and read from the DB only
-    //create/update Firestore document with user preferences
-    const favouriteId = setFavouriteDocument(!isFavourite, user.uid, data.id, type, favId);
-
-    this.setState({
-      isFavourite: !isFavourite,
-      favId: favouriteId,
-    })
-    //here I will set/unset the item as Favourite
+    setFavouriteDocument(user.uid, data.id, type)
+      .then(() => this.setState({
+        isFavourite: !isFavourite,
+      }))
   }
 
   render() {
@@ -134,5 +138,7 @@ class ItemCard extends Component {
     )
   }
 }
+
+ItemCard.contextType = UserContext;
 
 export default ItemCard;
