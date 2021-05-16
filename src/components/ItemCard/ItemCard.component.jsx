@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect, withRouter} from 'react-router-dom';
 import {UserContext} from '../../firebase/UserProvider';
 import {getFavouriteDocument, setFavouriteDocument} from '../../firebase/firebase';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
@@ -27,21 +28,24 @@ class ItemCard extends Component {
     
     // console.log("In componentDidUpdate - data", data)
     // console.log("In componentDidUpdate - user", user)
-
-    if(Object.keys(data).length > 0 ) {
-      if (data.id !== prevProps.data.id) {
-        getFavouriteDocument(user.uid, data.id)
-          .then((doc) => {
-            if(!doc.empty) {
-              console.log("Doc exsists (not empty")
-              this.setState({isFavourite: true})
-            }
-            else {
-              console.log("Doc ot exsists (empty)")
-              this.setState({isFavourite: false})
-            }
-          })
-          .catch(err => console.log("Error reading the data"))
+    if(!user) {
+      return ;
+    } else {
+      if(Object.keys(data).length > 0 ) {
+        if (data.id !== prevProps.data.id) {
+          getFavouriteDocument(user.uid, data.id)
+            .then((doc) => {
+              if(!doc.empty) {
+                console.log("Doc exsists (not empty")
+                this.setState({isFavourite: true})
+              }
+              else {
+                console.log("Doc ot exsists (empty)")
+                this.setState({isFavourite: false})
+              }
+            })
+            .catch(err => console.log("Error reading the data"))
+        }
       }
     }
   }
@@ -51,11 +55,28 @@ class ItemCard extends Component {
     const {isFavourite} = this.state;
     const {type, data} = this.props;
 
-    setFavouriteDocument(user.uid, data.id, type)
-      .then(() => this.setState({
-        isFavourite: !isFavourite,
-      }))
+
+    console.log("setfavs:", this.props);
+    //if USER is not logged in, will redirect to Sign IN page - then will get back here and ADD the favourite
+    if(!user) {
+      console.log("Not user");
+      //<Redirect to="/profile" />
+      this.props.history.push({
+        pathname:"/profile",
+        state: {
+          from: this.props.location.pathname,
+        }
+      });
+
+    } else {
+      console.log("User ");
+      setFavouriteDocument(user.uid, data.id, type)
+        .then(() => this.setState({
+          isFavourite: !isFavourite,
+        }))
+    }
   }
+
 
   render() {
     const {data, err, type, isFetching, isError} = this.props;
@@ -141,4 +162,4 @@ class ItemCard extends Component {
 
 ItemCard.contextType = UserContext;
 
-export default ItemCard;
+export default withRouter(ItemCard);
