@@ -6,9 +6,9 @@ const SignInSignUpPage = (props) => {
   const {state} = props.location;
   let redirect;
   if(state === undefined || state.signin === true) {
-    redirect = <SignInForm />;
+    redirect = <SignInForm payload={state} />;
   } else {
-    redirect = <SignUpForm />
+    redirect = <SignUpForm payload={state} />
   }
   return(
     <main>

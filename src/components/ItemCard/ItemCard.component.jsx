@@ -65,6 +65,7 @@ class ItemCard extends Component {
         pathname:"/profile",
         state: {
           from: this.props.location.pathname,
+          signin: true
         }
       });
 

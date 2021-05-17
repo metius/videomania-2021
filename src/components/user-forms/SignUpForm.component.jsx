@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import './UserForms.styles.scss';
 import SignInWithSocials from './SignInWithSocials.component';
 import { auth, generateUserDocument } from '../../firebase/firebase';
 
 class SignUpForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       displayName: '',
@@ -25,11 +25,17 @@ class SignUpForm extends React.Component {
     event.preventDefault();
 
     const {email, password, displayName} = this.state;
+    console.log("Props in Sign Up handler:", this.props);
+    const {payload} = this.props;
+
 
     try {      
       const {user} = await auth.createUserWithEmailAndPassword(email, password);      
-      generateUserDocument(user, {displayName: displayName});                   
-
+      await generateUserDocument(user, {displayName: displayName});     
+      if(!(payload === undefined)) {
+        console.log("We have data while signing up. From:", this.props);
+        this.props.history.push(payload.from);              
+      }
     } catch(err) {
       this.setState({        
         error: true,
@@ -53,6 +59,7 @@ class SignUpForm extends React.Component {
 
   render() {
     const {email, password, confirmPassword, displayName, error} = this.state;
+    console.log("Props in Sign Up:", this.props);
 
     return(
       <div className="sign-in-page">
@@ -121,7 +128,9 @@ class SignUpForm extends React.Component {
               to={{
                 pathname: "/profile",
                 state:{
-                  signin: true
+                  ...this.props.payload,
+                  signin: true,
+                  signup: false
                 }
               }}>
 
@@ -134,4 +143,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm;
+export default withRouter(SignUpForm);

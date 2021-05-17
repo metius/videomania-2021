@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import SignInWithSocials from './SignInWithSocials.component';
 import {signInWithEmailAndPassword, setPersistence} from '../../firebase/authMethods';
 
 import './UserForms.styles.scss';
 
 class SignInForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -34,6 +34,7 @@ class SignInForm extends React.Component {
     event.preventDefault();
 
     const {email, password, rememberMe} = this.state;
+    const {payload} = this.props;
 
     setPersistence(rememberMe)
       .catch(err => {
@@ -41,6 +42,13 @@ class SignInForm extends React.Component {
       });
 
     signInWithEmailAndPassword(email, password, rememberMe)
+      .then(() => {
+        console.log("Signed in");
+        if(!(payload === undefined)) {
+          console.log("We have data. From:", this.props);
+          this.props.history.push(payload.from);
+        }
+      })
       .catch(err => {
         console.log('Error hanlder in sign in:', err.message);
         this.setState({
@@ -55,6 +63,7 @@ class SignInForm extends React.Component {
 
   render() {
     const {email, password, error, errMessage, rememberMe} = this.state;
+    console.log("Props in signIn:", this.props);
 
     return(
       <div className="sign-in-page">
@@ -116,7 +125,9 @@ class SignInForm extends React.Component {
               to={{
                 pathname: "/profile",
                 state:{
-                  signUp: true
+                  ...this.props.payload,
+                  signup: true,
+                  signin: false
                 }
               }}>
               here
@@ -131,4 +142,4 @@ class SignInForm extends React.Component {
   }
 }
 
-export default SignInForm;
+export default withRouter(SignInForm);
