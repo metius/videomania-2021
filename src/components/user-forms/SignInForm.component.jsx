@@ -112,7 +112,13 @@ class SignInForm extends React.Component {
 
           <div className="login-form__signup">
             <span>Don't have an account? Register </span>
-            <Link to="/sign-up" >
+            <Link 
+              to={{
+                pathname: "/profile",
+                state:{
+                  signUp: true
+                }
+              }}>
               here
             </Link>
           </div>

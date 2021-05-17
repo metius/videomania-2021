@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './UserForms.styles.scss';
 import SignInWithSocials from './SignInWithSocials.component';
 import { auth, generateUserDocument } from '../../firebase/firebase';
@@ -115,6 +116,17 @@ class SignUpForm extends React.Component {
           </form>
             
           <SignInWithSocials />
+
+          <Link 
+              to={{
+                pathname: "/profile",
+                state:{
+                  signin: true
+                }
+              }}>
+
+            <p className="login-form__socials--title">Back to Sign In page</p>
+          </Link>
 
         </div>
       </div>
