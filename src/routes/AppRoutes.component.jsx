@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Switch, Route} from 'react-router-dom'
 import {UserContext} from '../firebase/UserProvider';
 
-
 import HomePage from '../pages/Home/Home.page';
 import MoviesPage from '../pages/Movies/Movies.page';
 import MovieCardPage from '../pages/Movies/MovieCard.page'

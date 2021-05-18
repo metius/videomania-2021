@@ -25,15 +25,12 @@ class SignUpForm extends React.Component {
     event.preventDefault();
 
     const {email, password, displayName} = this.state;
-    console.log("Props in Sign Up handler:", this.props);
     const {payload} = this.props;
-
 
     try {      
       const {user} = await auth.createUserWithEmailAndPassword(email, password);      
       await generateUserDocument(user, {displayName: displayName});     
       if(!(payload === undefined)) {
-        console.log("We have data while signing up. From:", this.props);
         this.props.history.push(payload.from);              
       }
     } catch(err) {
@@ -59,7 +56,6 @@ class SignUpForm extends React.Component {
 
   render() {
     const {email, password, confirmPassword, displayName, error} = this.state;
-    console.log("Props in Sign Up:", this.props);
 
     return(
       <div className="sign-in-page">

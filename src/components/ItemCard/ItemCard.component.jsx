@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {UserContext} from '../../firebase/UserProvider';
 import {getFavouriteDocument, setFavouriteDocument} from '../../firebase/firebase';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
@@ -26,8 +26,6 @@ class ItemCard extends Component {
     const {data} = this.props;
     const {user} = this.context;
     
-    // console.log("In componentDidUpdate - data", data)
-    // console.log("In componentDidUpdate - user", user)
     if(!user) {
       return ;
     } else {
@@ -36,15 +34,13 @@ class ItemCard extends Component {
           getFavouriteDocument(user.uid, data.id)
             .then((doc) => {
               if(!doc.empty) {
-                console.log("Doc exsists (not empty")
                 this.setState({isFavourite: true})
               }
               else {
-                console.log("Doc ot exsists (empty)")
                 this.setState({isFavourite: false})
               }
             })
-            .catch(err => console.log("Error reading the data"))
+            .catch(err => console.log("Error reading the data:", err.message))
         }
       }
     }
@@ -56,10 +52,8 @@ class ItemCard extends Component {
     const {type, data} = this.props;
 
 
-    console.log("setfavs:", this.props);
     //if USER is not logged in, will redirect to Sign IN page - then will get back here and ADD the favourite
     if(!user) {
-      console.log("Not user");
       //<Redirect to="/profile" />
       this.props.history.push({
         pathname:"/profile",
@@ -70,7 +64,6 @@ class ItemCard extends Component {
       });
 
     } else {
-      console.log("User ");
       setFavouriteDocument(user.uid, data.id, type)
         .then(() => this.setState({
           isFavourite: !isFavourite,
@@ -82,8 +75,6 @@ class ItemCard extends Component {
   render() {
     const {data, err, type, isFetching, isError} = this.props;
     const {isFavourite} = this.state;    
-    console.log("In render", this.props)
-
 
     if(isError) {
       //need to handle the error

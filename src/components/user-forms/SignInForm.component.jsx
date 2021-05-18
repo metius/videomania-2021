@@ -43,9 +43,7 @@ class SignInForm extends React.Component {
 
     signInWithEmailAndPassword(email, password, rememberMe)
       .then(() => {
-        console.log("Signed in");
         if(!(payload === undefined)) {
-          console.log("We have data. From:", this.props);
           this.props.history.push(payload.from);
         }
       })
@@ -63,7 +61,6 @@ class SignInForm extends React.Component {
 
   render() {
     const {email, password, error, errMessage, rememberMe} = this.state;
-    console.log("Props in signIn:", this.props);
 
     return(
       <div className="sign-in-page">
