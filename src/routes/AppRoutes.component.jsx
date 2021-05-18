@@ -9,7 +9,7 @@ import TvShowsPage from '../pages/TvShows/TvShows.page';
 import TvCardPage from '../pages/TvShows/TvCard.page';
 import CastPage from '../pages/Cast/Cast.page';
 import ProfilePage from '../pages/Profile/Profile.page';
-import SignInSignUpPage from '../pages/SignInSIgnUp/SIgnInSignUp.page';
+import SignInSignUpPage from '../pages/SignInSignUp/SignInSignUp.page';
 import PasswordResetPage from '../pages/PasswordReset/PasswordReset.page';
 // import ItemPage from './pages/Item/Item.page';
 import SearchPage from '../pages/Search/Search.page';
