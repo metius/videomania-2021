@@ -4,7 +4,9 @@ import SearchForm from '../../components/search-forms/SearchForm.component';
 
 const SearchPage = () => {
   return(
-    <div className=''></div>
+    <main>
+      <SearchForm />
+    </main>
   )
 }
 
