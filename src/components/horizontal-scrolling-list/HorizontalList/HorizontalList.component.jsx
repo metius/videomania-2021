@@ -9,9 +9,7 @@ import MediaListCard from '../MediaListCard/MediaListCard.component';
 import {TYPE_CAST, TYPE_MOVIE, TYPE_MEDIA, TYPE_TVSHOW} from '../../../utils/constants';
 import './HorizontalList.styles.scss';
 
-const HorizontalList = (props) => {
-  console.log('Results from search:', props);
-  
+const HorizontalList = (props) => {  
   if(props.err) {
     //need to handle the error
     console.log(`Data fetching failed with the error ${props.err}`)
