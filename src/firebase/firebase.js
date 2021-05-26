@@ -67,7 +67,11 @@ export const setFavouriteDocument = async (uid, itemId, type) => {
       }
     })
     .catch(err => {console.log("Error retrieving document", err.message)})
+}
 
+export const getFavouriteList = (uid) => {
+  //Ideally I don't have to check if user is logged in because I can reach this ONLY when logged (Profile page -> Profile info).
+  return firestore.collection('favourites').where("uid", "==", uid).get();
 }
 
 const addFavourite = (uid, itemId, type) => {

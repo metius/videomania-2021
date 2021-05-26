@@ -1,0 +1,11 @@
+.grid-list{
+  padding: 1em 0;
+
+  &__container{
+    display: grid;
+    width: 90vw;
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    grid-gap: 1em 1em;
+  }
+  
+}
