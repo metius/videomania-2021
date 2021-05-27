@@ -22,6 +22,7 @@ const ProfileInfo = () => {
         {/* Favourite list */}
         {/* <FavouriteList uid={user.uid} /> */}
         <FavouritesWithData />
+        
         {/* SignOut button */}
         <button className="login-form__btn" onClick={() => {
           auth.signOut()
