@@ -61,7 +61,6 @@ export const setFavouriteDocument = async (uid, itemId, type) => {
         });
       } else {
         //step2-b: if no match, we are adding -> we have the code for that
-        console.log("Empty - add");
         addFavourite(uid, itemId, type)
           .catch((err) => console.log(`Error while adding new document: ${err.message}`))       
       }
