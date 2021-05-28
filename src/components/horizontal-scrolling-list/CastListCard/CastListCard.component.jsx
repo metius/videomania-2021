@@ -1,5 +1,5 @@
 import React from 'react';
-import {S_PROFILE, M_PROFILE} from '../../../utils/tmdb_constants';
+import {S_PROFILE, M_PROFILE, L_PROFILE} from '../../../utils/tmdb_constants';
 import {getPicturePath} from '../../../utils/utilities';
 import ListCard from '../ListCard/ListCard.component';
 

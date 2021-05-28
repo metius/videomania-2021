@@ -96,7 +96,9 @@ class ItemCard extends Component {
     let runtime;
     let releaseYear;
 
-    //console.table(`Data fetched: ${JSON.stringify(data)}`);
+    // console.table(`Data fetched: ${JSON.stringify(data)}`);
+    console.log("Reccomended:", data.recommendations)
+
 
     if( type === TYPE_MOVIE) {
       title = data.title;
@@ -141,9 +143,14 @@ class ItemCard extends Component {
               <p>{data.overview}</p>
             </div>
 
+            {/* //Cast list */}
             <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
 
+            {/* Videos */}
             <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
+
+            {/* Reccomended movies/tv-shows */}
+            <HorizontalList data={data.recommendations} title={`${type === TYPE_MOVIE ? 'Other Movies You Could Like' : 'Other Tv Shows You Could Like'}`} type={`${type === TYPE_MOVIE ? TYPE_MOVIE : TYPE_TVSHOW}`} search/>
               
           </div>
         </article>

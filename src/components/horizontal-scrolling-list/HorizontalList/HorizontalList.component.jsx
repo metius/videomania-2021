@@ -42,7 +42,9 @@ const HorizontalList = (props) => {
       break;      
     case TYPE_MEDIA:
       cards = props.data.map(item => <MediaListCard data={item} key={item.id} type={type} />);
-      break;      
+      break;     
+    default:
+      return; 
   }
 
   return(
