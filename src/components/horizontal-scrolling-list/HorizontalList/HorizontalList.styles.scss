@@ -1,5 +1,6 @@
 .list {
-  
+  margin-bottom: .5em;
+
   &__wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -7,9 +8,5 @@
     align-items: flex-start;
 
     scrollbar-width: none;
-  }
-
-  &--media {
-    margin-bottom: 1em;
   }
 }

@@ -5,7 +5,7 @@ import {MOVIE_POPULAR, MOVIE_OUT_NOW, TV_POPULAR, TV_ON_AIR_NOW} from '../../uti
 
 import {TYPE_MOVIE, TYPE_TVSHOW} from '../../utils/constants';
 
-import './Home.styles.scss';
+// import './Home.styles.scss';
 
 const MoviePopular = withFetch(HorizontalList, MOVIE_POPULAR);
 const TvPopular = withFetch(HorizontalList, TV_POPULAR);

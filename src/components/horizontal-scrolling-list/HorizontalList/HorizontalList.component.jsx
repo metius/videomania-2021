@@ -48,7 +48,7 @@ const HorizontalList = (props) => {
   }
 
   return(
-    <div className={`list section-grid ${type === TYPE_MEDIA ? 'list--media' : ''} `} >
+    <div className={`list section-grid `} >
       <h2 className={type === TYPE_CAST || type === TYPE_MEDIA || props.search ? 'section-title full' : 'section-title'}>{title}</h2>
       <section className={type === TYPE_CAST || type === TYPE_MEDIA || props.search? 'list__wrapper full' : 'list__wrapper'}>
         {cards}

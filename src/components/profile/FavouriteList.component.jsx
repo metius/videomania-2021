@@ -74,8 +74,8 @@ class FavouriteList extends React.Component {
 
     return(
       <>
-        <GridList title='Tv Shows' data={tvs} type={TYPE_TVSHOW} />
-        <GridList title='Movies' data={movies} type={TYPE_MOVIE} />
+        <GridList title='Your Favourites - Tv Shows' data={tvs} type={TYPE_TVSHOW} />
+        <GridList title='Your Favourites - Movies' data={movies} type={TYPE_MOVIE} />
       </>
     )
   }
