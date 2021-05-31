@@ -85,19 +85,6 @@ const removeFavourite = (docId) => {
   return firestore.collection("favourites").doc(docId).delete();
 }
 
-const getDocument = async (id, collection) => {
-  if(!id) return null;
-
-  try {
-    const userDocument = await firestore.doc(`${collection}/${id}`).get();
-    return {
-      ...userDocument.data()
-    }
-  } catch(error) {
-    console.log(`Error fetching user: ${error}`);
-  }
-}
-
 const getUserDocument = async uid => {
   if(!uid) return null;
 
