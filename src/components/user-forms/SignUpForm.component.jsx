@@ -56,6 +56,7 @@ class SignUpForm extends React.Component {
 
   render() {
     const {email, password, confirmPassword, displayName, error} = this.state;
+    const {payload} = this.props;
 
     return(
       <div className="sign-in-page">
@@ -118,13 +119,13 @@ class SignUpForm extends React.Component {
 
           </form>
             
-          <SignInWithSocials />
+          <SignInWithSocials payload={payload} />
 
           <Link 
               to={{
                 pathname: "/profile",
                 state:{
-                  ...this.props.payload,
+                  ...payload,
                   signin: true,
                   signup: false
                 }

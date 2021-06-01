@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {signInWithGoogle, signInWithFacebook, signInWithTwitter} from '../../firebase/authMethods';
@@ -17,12 +18,15 @@ class SignInWithSocials extends React.Component {
   }
 
   handleSocialSignIn (e, socialSignIn) {
-
     e.preventDefault();
+    const {payload} = this.props;
 
     socialSignIn()
       .then((result) => {
         generateUserDocument(result.user);
+        if(!(payload === undefined)) {
+          this.props.history.push(payload.from);
+        }
       })
       .catch(err => console.log(err.message))
   }
@@ -47,4 +51,4 @@ class SignInWithSocials extends React.Component {
   }
 }
 
-export default SignInWithSocials;
+export default withRouter(SignInWithSocials);

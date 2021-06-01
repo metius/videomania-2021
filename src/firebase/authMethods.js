@@ -20,7 +20,6 @@ export const signInWithEmailAndPassword = (email, password) => {
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   const user = auth.signInWithPopup(provider);
-  console.log('google sing in')
   return user;
 }
 export const signInWithFacebook = () => {

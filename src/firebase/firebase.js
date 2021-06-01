@@ -16,18 +16,15 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const generateUserDocument = async (user, additionalData) => {
-  console.log(`User in generate user document: ${JSON.stringify(user)}`);
+  // console.log(`User in generate user document: ${JSON.stringify(user)}`);
   if(!user) return;
-  console.log("We should not see this the first time")
 
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
   
   if(!snapshot.exists) {
-    console.log('Hopefully only if user do not exsist:', additionalData)
     const createdAt = new Date();
     const {email, displayName} = user;
-    //const {displayName} = additionalData.displayName;
     try {
       await userRef.set({        
         email,
