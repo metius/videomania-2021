@@ -16,20 +16,24 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const generateUserDocument = async (user, additionalData) => {
-  const createdAt = new Date();
-  //console.log(`User in generate user document: ${JSON.stringify(user)}`);
+  console.log(`User in generate user document: ${JSON.stringify(user)}`);
   if(!user) return;
+  console.log("We should not see this the first time")
 
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
-
+  
   if(!snapshot.exists) {
-    const {email} = user;
+    console.log('Hopefully only if user do not exsist:', additionalData)
+    const createdAt = new Date();
+    const {email, displayName} = user;
+    //const {displayName} = additionalData.displayName;
     try {
       await userRef.set({        
         email,
         createdAt,
-        ...additionalData
+        displayName,
+        // ...additionalData
       });
     } catch(error) {
       console.log(`Error creating new user: ${error}`);
@@ -37,6 +41,20 @@ export const generateUserDocument = async (user, additionalData) => {
   }
 
   return getUserDocument(user.uid);
+}
+
+const getUserDocument = async uid => {
+  if(!uid) return null;
+
+  try {
+    const userDocument = await firestore.doc(`users/${uid}`).get();
+    return {
+      uid,
+      ...userDocument.data()
+    }
+  } catch(error) {
+    console.log(`Error fetching user: ${error}`);
+  }
 }
 
 export const getFavouriteDocument = (uid, itemId) => {
@@ -83,18 +101,4 @@ const addFavourite = (uid, itemId, type) => {
 
 const removeFavourite = (docId) => {
   return firestore.collection("favourites").doc(docId).delete();
-}
-
-const getUserDocument = async uid => {
-  if(!uid) return null;
-
-  try {
-    const userDocument = await firestore.doc(`users/${uid}`).get();
-    return {
-      uid,
-      ...userDocument.data()
-    }
-  } catch(error) {
-    console.log(`Error fetching user: ${error}`);
-  }
 }

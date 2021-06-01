@@ -16,13 +16,13 @@ class SignInWithSocials extends React.Component {
 
   }
 
-  handleSocialSignIn(e, socialSignIn) {
+  handleSocialSignIn (e, socialSignIn) {
+
     e.preventDefault();
 
     socialSignIn()
-      .then(result => {
-        const {displayName} = result.user;        
-        generateUserDocument(result.user, {displayName: displayName});
+      .then((result) => {
+        generateUserDocument(result.user);
       })
       .catch(err => console.log(err.message))
   }

@@ -8,6 +8,7 @@ export const UserProvider = ({children}) => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
+      console.log(`In userProvider`)
       generateUserDocument(user)
         .then(user => setUser(user));
     })

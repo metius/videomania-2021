@@ -74,8 +74,9 @@ class FavouriteList extends React.Component {
 
     return(
       <>
-        <GridList title='Your Favourites - Tv Shows' data={tvs} type={TYPE_TVSHOW} />
-        <GridList title='Your Favourites - Movies' data={movies} type={TYPE_MOVIE} />
+        {tvs.length === 0 && movies.length === 0 ? <p className='profile__main'>{`You don't have any favourite saved.`}</p> : null}
+        {tvs.length > 0 ? <GridList title='Your Favourites - Tv Shows' data={tvs} type={TYPE_TVSHOW} /> : null}
+        {movies.length > 0 ? <GridList title='Your Favourites - Movies' data={movies} type={TYPE_MOVIE} /> : null}
       </>
     )
   }
