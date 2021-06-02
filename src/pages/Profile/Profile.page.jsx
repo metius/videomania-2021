@@ -8,9 +8,7 @@ const ProfilePage = (props) => {
   // console.log("Profile page props", props)
 
   return(
-    <main>
-      <ProfileInfo user={user}/>
-    </main>
+    <ProfileInfo user={user}/>
   )
 }
 

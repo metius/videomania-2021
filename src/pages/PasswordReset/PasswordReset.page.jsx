@@ -3,9 +3,9 @@ import PassResetForm from '../../components/user-forms/PassResetForm.component';
 
 const PasswordResetPage = () => {
   return(
-    <main>
+    <>
       <PassResetForm />
-    </main>
+    </>
   )
 }
 

@@ -46,7 +46,6 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
     releaseYear = '---';
   }
   return(
-    <main>
       <article className="item-page">
         <div className="item-page__header img-shadow">
           <img src={backdropImg} alt={data.name} className="item-page__img " />
@@ -76,7 +75,6 @@ const ItemCard = ({data, err, isError, isFetching, type}) => {
             
         </div>
       </article>
-    </main>
   )
 }
 

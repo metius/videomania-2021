@@ -6,7 +6,7 @@ import SignUpForm from '../../components/user-forms/SignUpForm.component'
 const SignUpPage = () => {
   const {user} = useContext(UserContext);
   return(
-    <main>
+    <>
       {
         !!user ? (
           //In this case user exsists or he is signed in - so will show profile page
@@ -25,7 +25,7 @@ const SignUpPage = () => {
           </div> */
         )
       }
-    </main>
+    </>
   )
 }
 

@@ -11,12 +11,12 @@ const TvShowsPage = () => {
   const TvTopRated = withFetch(HorizontalList, TV_TOP_RATED);
 
   return(
-    <main>            
+    <>            
       <TvPopular title="Popular Tv Shows" type={TYPE_TVSHOW} />
       <TvToday title="Today on Tv" type={TYPE_TVSHOW} />
       <TvOnAirNow title="Tv Shows On Air" type={TYPE_TVSHOW} />
       <TvTopRated title="Top Rated" type={TYPE_TVSHOW} />
-    </main>
+    </>
   )
 }
 

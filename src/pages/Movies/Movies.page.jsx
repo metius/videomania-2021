@@ -11,12 +11,12 @@ const MoviePage = () => {
   const MovieComingSoon = withFetch(HorizontalList, MOVIE_COMING_SOON);
 
   return(
-    <main>
+    <>
       <MoviePopular title="Popular Movies" type={TYPE_MOVIE} />
       <MovieOutNow  title="At the Theaters" type={TYPE_MOVIE} />
       <MovieTopRated  title="Top Rated" type={TYPE_MOVIE} />
       <MovieComingSoon  title="Coming Soon" type={TYPE_MOVIE} />
-    </main>
+    </>
   )
 }
 

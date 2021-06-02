@@ -116,45 +116,43 @@ class ItemCard extends Component {
     }
     
     return(
-      <main>
-        <article className="item-page">
-          <div className="item-page__header img-shadow">
-            <img src={backdropImg} alt={data.name} className="item-page__img " />
-            <div 
-              className="card-favourite" 
-              onClick={this.setFavourite}
-            >
-              <StarIcon isFavourite={isFavourite} />
-            </div>
-            <div className="item-page__title-box">
-              <h2 className="item-page__title">{title}</h2>
-            </div>
+      <article className="item-page">
+        <div className="item-page__header img-shadow">
+          <img src={backdropImg} alt={data.name} className="item-page__img " />
+          <div 
+            className="card-favourite" 
+            onClick={this.setFavourite}
+          >
+            <StarIcon isFavourite={isFavourite} />
           </div>
-        
-          <div className="item-page__main section-grid">
-            <div className="item-page__info">
-              <span>{`${data.vote_average}/10`}</span>
-              <span>{`${runtime} min`}</span>
-              <span>{`${releaseYear}`}</span>          
-            </div>
-
-            <div className="item-page__overview">
-              <h2 className="section-title">Overview</h2>
-              <p>{data.overview}</p>
-            </div>
-
-            {/* //Cast list */}
-            <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
-
-            {/* Videos */}
-            <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
-
-            {/* Reccomended movies/tv-shows */}
-            <HorizontalList data={data.recommendations} title={`${type === TYPE_MOVIE ? 'Other Movies You Could Like' : 'Other Tv Shows You Could Like'}`} type={`${type === TYPE_MOVIE ? TYPE_MOVIE : TYPE_TVSHOW}`} search/>
-              
+          <div className="item-page__title-box">
+            <h2 className="item-page__title">{title}</h2>
           </div>
-        </article>
-      </main>
+        </div>
+      
+        <div className="item-page__main section-grid">
+          <div className="item-page__info">
+            <span>{`${data.vote_average}/10`}</span>
+            <span>{`${runtime} min`}</span>
+            <span>{`${releaseYear}`}</span>          
+          </div>
+
+          <div className="item-page__overview">
+            <h2 className="section-title">Overview</h2>
+            <p>{data.overview}</p>
+          </div>
+
+          {/* //Cast list */}
+          <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
+
+          {/* Videos */}
+          <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
+
+          {/* Reccomended movies/tv-shows */}
+          <HorizontalList data={data.recommendations} title={`${type === TYPE_MOVIE ? 'Other Movies You Could Like' : 'Other Tv Shows You Could Like'}`} type={`${type === TYPE_MOVIE ? TYPE_MOVIE : TYPE_TVSHOW}`} search/>
+            
+        </div>
+      </article>
     )
   }
 }

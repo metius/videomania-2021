@@ -11,11 +11,11 @@ const SignInSignUpPage = (props) => {
     redirect = <SignUpForm payload={state} />
   }
   return(
-    <main>
+    <>
       {
         redirect
       }
-    </main>
+    </>
   )
 }
 

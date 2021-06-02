@@ -2,7 +2,7 @@ import React from 'react';
 
 const CastPage = () => {
   return(
-    <main>Cast Page</main>
+    <>Cast Page</>
   )
 }
 
