@@ -4,8 +4,9 @@ import SignUpForm from '../../components/user-forms/SignUpForm.component';
 
 const SignInSignUpPage = (props) => {
   const {state} = props.location;
+  console.log("State", props)
   let redirect;
-  if(state === undefined || state.signin === true) {
+  if(state === undefined || state === null || state.signin === true) {
     redirect = <SignInForm payload={state} />;
   } else {
     redirect = <SignUpForm payload={state} />

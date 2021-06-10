@@ -83,10 +83,6 @@ h4{
 
 /* shared styles */
 
-main {
-  margin: 3em 0 3em 0;
-}
-
 .section-title {
   border-bottom: 1px solid var(--title-white-rgb);
   display: inline-block;

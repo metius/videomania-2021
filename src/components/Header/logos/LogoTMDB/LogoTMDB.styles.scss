@@ -1,6 +1,7 @@
 .logo--tmdb {
   text-align: end;
   width: 24%;
+  padding-right: .5em;
 
   &__text {
     font-size: .8em;
@@ -12,4 +13,10 @@
     max-width: 100%;
     display: block;
   }
+}
+
+@media (min-width:600px) {
+  .logo--tmdb {
+    display: none;
+  }  
 }
