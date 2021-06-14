@@ -45,9 +45,10 @@ a:focus {
 }
 
 body {
-  /* temporary change color for test mobile wrapper */
-  background-color: var(--primary);
+  background-image: linear-gradient(to bottom, #000000, #161616, #242424, #343434, #444444);
+  background-attachment: scroll;
   color: var(--secondary);
+  min-height: 100vh;
 }
 
 li {
@@ -120,15 +121,3 @@ h4{
   z-index: -1; 
 }
 
-/* temporary wrapper for mobile version */
-/* #root {
-  max-width: 320px;
-  height: 568px;
-  border: 2px solid black;
-  margin: 0 auto;
-  position: relative;
-
-  background-color: var(--primary);
-  color: var(--secondary);
-
-} */

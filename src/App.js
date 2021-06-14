@@ -2,6 +2,7 @@ import './App.css';
 
 import Header from './components/Header/Header.component';
 import BottomNav from './components/navigation/BottomNav/BottomNav.component';
+import Footer from './components/Footer/Footer.component';
 import AppRoutes from './routes/AppRoutes.component';
 
 //providers
@@ -14,9 +15,8 @@ function App() {
         <Header />
         <AppRoutes />
         
-        {/* <Footer /> */}
-
         <BottomNav />
+        <Footer />
       </div>
     </UserProvider>
   );

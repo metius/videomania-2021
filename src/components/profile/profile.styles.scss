@@ -32,17 +32,3 @@
     }
   }
 }
-
-@media (min-width:500px) {
-  .profile__btn {
-    &--top {
-      display: block;
-      max-width: 8em;
-      padding: .2em 1em;
-    }
-
-    &--bottom {
-      display: none;
-    }
-  }
-}

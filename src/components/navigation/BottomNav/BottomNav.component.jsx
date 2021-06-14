@@ -8,7 +8,7 @@ const BottomNav = () => {
   return(
     <nav className="bottom-nav">
       <ul className="bottom-nav__container">
-        <NavLink to="/" exact className="bottom-nav__item" activeClassName="bottom-nav__item--box">
+        <NavLink to="/" exact className="bottom-nav__item" activeClassName="bottom-nav__active">
           
           <li className="bottom-nav__icon">
             <FontAwesomeIcon icon={faHome} />
@@ -16,25 +16,25 @@ const BottomNav = () => {
           </li>
           
         </NavLink>
-        <NavLink to="/movies" className="bottom-nav__item" activeClassName="bottom-nav__item--box">
+        <NavLink to="/movies" className="bottom-nav__item" activeClassName="bottom-nav__active">
           <li className="bottom-nav__icon">
             <FontAwesomeIcon icon={faFilm} />
             <span className="bottom-nav__text">Movies</span>
           </li>
         </NavLink>
-        <NavLink to="/tv-shows" className="bottom-nav__item" activeClassName="bottom-nav__item--box">
+        <NavLink to="/tv-shows" className="bottom-nav__item" activeClassName="bottom-nav__active">
           <li className="bottom-nav__icon">
             <FontAwesomeIcon icon={faTv} />
             <span className="bottom-nav__text">TV</span>
           </li>
         </NavLink>
-        <NavLink to="/search" className="bottom-nav__item" activeClassName="bottom-nav__item--box">
+        <NavLink to="/search" className="bottom-nav__item" activeClassName="bottom-nav__active">
           <li className="bottom-nav__icon">
             <FontAwesomeIcon icon={faSearch} />
             <span className="bottom-nav__text">Search</span>
           </li>
         </NavLink>
-        <NavLink to="/profile" className="bottom-nav__item" activeClassName="bottom-nav__item--box">
+        <NavLink to="/profile" className="bottom-nav__item" activeClassName="bottom-nav__active">
           <li className="bottom-nav__icon">
             <FontAwesomeIcon icon={faUser} />
             <span className="bottom-nav__text">Profile</span>

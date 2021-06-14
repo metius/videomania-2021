@@ -1,13 +1,9 @@
 .bottom-nav {
-  // change the positioning settings for test wrapper
   position: fixed;
   bottom: 0;
-  // position: absolute;
-  // bottom: 0;
+  //background-color: rgba(68, 68, 68, .7);
+  background-color: black;
   width: 100%;
-  background-color: var(--primary_shade1);
-  border-top: 1px solid rgba(255,255,255,.5 );
-  /* height: 3em; */
 
   &__container {
     display: flex;
@@ -16,20 +12,16 @@
   }
 
   &__item {
-    // text-align: center;
     flex: 1;
     font-size: 1em;
     padding-top: .1em;
 
     display: flex;
     justify-content: center;
-    
+  }
 
-    &--box {
-      // border: 1px solid greenyellow;
-      display: block;
-      background-color: var(--title-white-rgb);
-    }
+  &__active li{
+    color: var(--btn-primary);
   }
 
   &__icon {
