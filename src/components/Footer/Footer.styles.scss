@@ -1,7 +1,4 @@
 footer {
-  //background-color: var(--primary_shade1);
-  //border-top: 1px solid rgba(255,255,255,.5 );
-  // min-height: 5em;
   display: none;
 }
 
@@ -19,22 +16,17 @@ footer {
       flex: 1 1 70%;
       padding: .5em 0em;
       text-align-last: left;
-      // border: 1px solid red;
     }
 
     &--right {
       flex: 1 1 50%;
-      // border: 1px solid yellow;
     }
   }
-
-
 
   &__bottom {
     font-size: .8em;
     color: rgba(255,255,255,.5 );
     margin: .3em 0;
-    // line-height: 0;
   }
 
   &__link {

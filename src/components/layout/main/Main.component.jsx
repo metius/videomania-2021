@@ -4,7 +4,9 @@ import './Main.styles.scss';
 const Main = ({children}) => {
   return(
     <main>
-      {children}
+      <div className='main'>
+        {children}
+      </div>
     </main>
   )
 }

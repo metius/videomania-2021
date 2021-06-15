@@ -1,5 +1,4 @@
 import React from 'react';
-import LogoTMDB from '../logos/LogoTMDB/LogoTMDB.component'
 import LogoVideomania from '../logos/LogoVideomania/LogoVideomania.component';
 import './Footer.styles.scss';
 
@@ -13,7 +12,11 @@ const Footer = () =>  {
         <LogoVideomania />
       </div>
       <div className='footer__bottom'>
-        &copy;{year} Copyright - Designed and Created by <span className='footer__link'><a href="#" target="_blank">mattiaV.</a></span>
+        &copy; {year} Copyright - Designed and Created by <span className='footer__link'>
+          <a href="https://www.google.com" target="_blank" rel="noreferrer">
+            mattiaV.
+          </a>
+        </span>
       </div>
 
     </footer>

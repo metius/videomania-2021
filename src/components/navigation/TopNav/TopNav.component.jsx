@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import ProfileBarIcon from '../ProfileBarIcon/ProfileBarIcon.component';
 import './TopNav.styles.scss';
 
 const TopNav = () => {
@@ -19,7 +20,7 @@ const TopNav = () => {
           <li className="navbar__item">Search</li>
         </NavLink>
         <NavLink to="/profile" activeClassName="navbar__selected">
-          <li className="navbar__item">Profile</li>
+          <ProfileBarIcon />
         </NavLink>
       </ul>
     </nav>

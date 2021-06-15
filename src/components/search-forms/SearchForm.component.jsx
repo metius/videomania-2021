@@ -5,6 +5,7 @@ import {TYPE_CAST, TYPE_MOVIE, TYPE_TVSHOW} from '../../utils/constants';
 import {getSearchResults} from '../../utils/tmdb_api';
 import './SearchForms.styles.scss';
 
+
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
@@ -72,13 +73,13 @@ class SearchForm extends React.Component {
     }
 
     return(
-      <div className="sign-in-page">
-        <div className="login-form">
-          <h3 className="login-form__title">Search</h3>
-          <form className="login-form__wrapper">
+      <div className="search-page">
+        <div className="search-form">
+          <h3 className="search-form__title">Search</h3>
+          <form className="search-form__wrapper">
             <input 
               type="text" 
-              className="login-form__input" 
+              className="search-form__input" 
               placeholder="Search..." 
               name="query"
               value={query}
@@ -87,6 +88,8 @@ class SearchForm extends React.Component {
               onChange={this.onChangeHandler}  
             />
           </form>
+        </div>
+        <div className="search-panel">
 
           {
             tvs.results.length > 0 

@@ -13,14 +13,17 @@
     text-align: center;
   }
 
-  &__wrapper {
+  &__wrapper,
+  &__signup {
     width: 100%;
     margin: 0 auto;
+    max-width: 20em;
   }
 
   &__input {
     margin-bottom: 1em;
-    background-color: rgba(var(--primary_shade1-rgb), 0.8);
+    // background-color: rgba(var(--primary_shade1-rgb), 0.8);
+    background-color: transparent;
     color:rgb(253, 255, 252);
     font-size: 1rem;
     border: 0;
@@ -72,6 +75,8 @@
 
   &__socials {
     width: 100%;
+    margin: 0 auto;
+    max-width: 20em;
 
     &--title {
       color:rgba(255,255,255,.5 );

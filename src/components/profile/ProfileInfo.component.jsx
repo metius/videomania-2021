@@ -16,7 +16,6 @@ const ProfileInfo = () => {
     () => getFavouriteList(user.uid)
   );
 
-  console.log(`User ID: ${user.uid} - Display name: ${user.displayName}`);
   return(
     <div className="profile-page">
       <div className='profile'>

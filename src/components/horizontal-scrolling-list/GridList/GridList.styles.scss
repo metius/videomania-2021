@@ -3,7 +3,7 @@
 
   &__container{
     display: grid;
-    width: 90vw;
+    // width: 90vw;
     grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
   }
   

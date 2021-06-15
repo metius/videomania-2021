@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin-top: .3em;
 
-  &__selected li{
+  &__selected li, svg{
     color: var(--btn-primary);
   }
 }
@@ -11,7 +11,7 @@
 @media (min-width:600px) {
   nav {
     width: 60%;
-    max-width: 400px;
+    max-width: 25em;
   }
   .navbar{
     display: flex;

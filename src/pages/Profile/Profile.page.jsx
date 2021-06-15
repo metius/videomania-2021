@@ -3,9 +3,8 @@ import {withRouter} from 'react-router-dom';
 import {UserContext} from '../../firebase/UserProvider';
 import ProfileInfo from '../../components/profile/ProfileInfo.component';
 
-const ProfilePage = (props) => {
+const ProfilePage = () => {
   const {user} = useContext(UserContext);
-  // console.log("Profile page props", props)
 
   return(
     <ProfileInfo user={user}/>

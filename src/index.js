@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.component';
 //context providers
 //import {AuthProvider} from './firebase/context';
 import reportWebVitals from './reportWebVitals';
@@ -11,6 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       {/* <AuthProvider> */}
+        <ScrollToTop />
         <App />
       {/* </AuthProvider> */}
     </BrowserRouter>
