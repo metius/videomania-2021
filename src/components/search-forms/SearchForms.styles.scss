@@ -8,7 +8,7 @@
   width: 85%;
 
   &__title {
-    font-size: 1.8rem;
+    font-size: 1.8em;
     text-align: center;
   }
 
@@ -20,10 +20,9 @@
 
   &__input {
     margin-bottom: 1em;
-    // background-color: rgba(var(--primary_shade1-rgb), 0.8);
     background-color: transparent;
     color:rgb(253, 255, 252);
-    font-size: 1rem;
+    font-size: 1em;
     border: 0;
     border-bottom: 1px solid rgba(255,255,255,.5 );
     padding: .4em .2em;
@@ -33,7 +32,7 @@
   &__input:focus {
     outline: none;
     border: 0;
-    border-bottom: 1px solid var(--btn-primary);
+    border-bottom: 1px solid var(--thertiary);
   }
 }
 
