@@ -1,0 +1,31 @@
+.scrollBtn {
+  height: 85%;
+  background-color: rgba(60,60,60,.8);
+  border: 0;
+  color: #ddd;
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: .2em;
+  z-index: 2;
+  cursor: pointer;
+  display: none;
+
+  &--visible {
+    display: block;
+  }
+
+  &--left {
+    left: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &--right {
+    right: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

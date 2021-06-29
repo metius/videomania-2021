@@ -4,6 +4,7 @@
   //background-color: rgba(68, 68, 68, .7);
   background-color: black;
   width: 100%;
+  z-index: 10;
 
   &__container {
     display: flex;
