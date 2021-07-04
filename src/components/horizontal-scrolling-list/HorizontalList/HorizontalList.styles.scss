@@ -1,9 +1,39 @@
 .list {
   margin-bottom: .5em;
-  
 
+  &__top {
+    border-bottom: 1px solid var(--thertiary);
+    margin-bottom: .6em;
+    display: block;
+
+    &--wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .1em;
+    }
+
+    &--controls {
+      display: flex;
+    }
+
+    &--btns {
+      background-color: transparent;
+      color: var(--secondary);
+      border: none;
+      font-size: 1.1rem;
+      cursor: default;
+      margin-left: 1em;
+      padding: 0 .5em;
+      opacity: .15;
+
+      &--visible {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+  
   &__container {
-    // display: flex;
     position: relative;
   }
 
@@ -25,15 +55,6 @@
     &--visible {
       display: block;
     }
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   bottom: 0;
-    //   opacity: 0;
-    //   -webkit-transition: opacity .25s ease;
-    //   transition: opacity .25s ease;
-    // }
 
     &--left {
       left: 0;

@@ -138,7 +138,8 @@ class ItemCard extends Component {
           </div>
 
           <div className="item-page__overview">
-            <h2 className="section-title">Overview</h2>
+            {/* <h2 className="section-title">Overview</h2> */}
+            <h2 className="item-page__overview--title">Overview</h2>
             <p>{data.overview}</p>
           </div>
 
