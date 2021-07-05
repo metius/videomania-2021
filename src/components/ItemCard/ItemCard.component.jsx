@@ -150,7 +150,7 @@ class ItemCard extends Component {
           <HorizontalList data={data.videos.results} title='Videos' type={TYPE_MEDIA} />
 
           {/* Reccomended movies/tv-shows */}
-          <HorizontalList data={data.recommendations} title={`${type === TYPE_MOVIE ? 'Other Movies You Could Like' : 'Other Tv Shows You Could Like'}`} type={`${type === TYPE_MOVIE ? TYPE_MOVIE : TYPE_TVSHOW}`} search/>
+          <HorizontalList data={data.recommendations} title={`${type === TYPE_MOVIE ? 'Other Movies You Could Like' : 'Other Shows You Could Like'}`} type={`${type === TYPE_MOVIE ? TYPE_MOVIE : TYPE_TVSHOW}`} search/>
             
         </div>
       </article>

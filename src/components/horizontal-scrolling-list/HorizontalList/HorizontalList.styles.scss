@@ -77,5 +77,19 @@
 
     scrollbar-width: none;
 
+    // Disable scrollbars
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;  /* Chrome, Safari and Opera */ 
+    }
+
+  }
+}
+
+@media (max-width: 1200px) and (pointer:coarse){
+  .list__top--controls {
+    display: none;
   }
 }

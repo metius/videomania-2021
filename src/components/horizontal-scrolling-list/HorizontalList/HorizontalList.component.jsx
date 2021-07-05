@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCaretLeft, faCaretRight} from '@fortawesome/free-solid-svg-icons';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 // import ListCard from '../ListCard/ListCard.component';
 import MovieListCard from '../MovieListCard/MovieListCard.component';
@@ -30,58 +29,97 @@ class HorizontalList extends React.Component {
   }
 
   handleScroll(e, direction) {
-    // 1) need to calculate the size of a card and then move right or left based on that
-
-  //   In order to calculate the proper scrolling: 
-
-	//    - total size of a single card (offsetWidth + margin [border included])
-	//    - divide offsetWidth/total size of single card ---> I get number of items visible
-	//    - scroll by (number of items * total size of single card) [plus/minus]
+  // ---> move to componentDidUpdate - this method should "just" handle the scroll
+    e.preventDefault();
 
     const {current} = this.navRef;
     const {leftBtn, rightBtn, scrollWidth, scrollingPx} = this.state;
 
-    console.log('Scrolling pixel calculated:', scrollingPx)
-
-    console.log('Offset:', current.offsetWidth)
-    console.log('Width from state:', scrollWidth)
     if(direction === 'left') {
       console.log("Left")
+      //settings default start position as total size of list - probablu not neeeded
+      let currentStartPosition = current.offsetWidth;
+
       if(this.navRef) { 
         current.scroll({
           left: current.scrollLeft - scrollingPx,
           behavior: 'smooth'
         })
-      }
 
-      if((current.scrollLeft + current.offsetWidth < scrollWidth) && !rightBtn) {
-        this.setState({
-          rightBtn: true,
-        })
-      }
+        if(!rightBtn) {
+          console.log('Enable right button')
+          this.setState({
+            rightBtn: true,
+          })
+        }
 
-      if(current.scrollLeft === 0) {
-        this.setState({
-          leftBtn: false,
-        })
+        currentStartPosition = current.scrollLeft - scrollingPx;
+        console.log('CurrentSTartPosition: ', currentStartPosition);
+        console.log('Current OffsetWidth', current.offsetWidth);
+        console.log('Current ScrollLeft', current.scrollLeft);
+        console.log('ScrollingPx:', scrollingPx)
+        console.log('Scrollwidth', scrollWidth);
+
+        if(currentStartPosition <= 0)
+        {
+          console.log('Left - Request re-render for disable left btn')
+          this.setState({
+            leftBtn: false,
+          })
+        }
       }
+      
+      // if((current.scrollLeft + current.offsetWidth < scrollWidth) && !rightBtn) 
+      // if((current.scrollLeft + current.offsetWidth < current.scrollWidth) && !rightBtn) 
+      // {
+      //   console.log('Left - Request re-render for enable right btn')
+      //   this.setState({
+      //     rightBtn: true,
+      //   })
+      // }
+
+      // if(current.scrollLeft === 0) 
+      // if(currentStartPosition <= 0)
+      // {
+      //   console.log('Left - Request re-render for disable left btn')
+      //   this.setState({
+      //     leftBtn: false,
+      //   })
+      // }
       
     } else {
       console.log("Right")
+      let currentEndPosition = 0;
+
       if(this.navRef) {
+        console.log('Current.ScrollLeft - before scroll', current.scrollLeft);
+        console.log('ScrollingPx:', scrollingPx)
 
         current.scroll({
           left: current.scrollLeft + scrollingPx,
           behavior: 'smooth'
         })
+        // currentPosition = current.scrollLeft + scrollingPx;
+        currentEndPosition = current.scrollLeft + (scrollingPx*2);
 
-        if(current.scrollLeft > 0 && !leftBtn) {
+        console.log('Current End Position: ', currentEndPosition);
+        console.log('Current OffsetWidth', current.offsetWidth);
+        console.log('Current ScrollLeft', current.scrollLeft);
+        console.log('Scrollwidth', scrollWidth);
+
+        // if(current.scrollLeft > 0 && !leftBtn) 
+        if(!leftBtn) 
+        {
+          console.log('Right - Request re-render for enable left btn')
           this.setState({
             leftBtn: true,
           })
         }
 
-        if(current.scrollLeft + current.offsetWidth === scrollWidth) {
+        // if(current.scrollLeft + current.offsetWidth === scrollWidth) 
+        if(currentEndPosition >= scrollWidth - this.getCardSize(current)) 
+        {
+          console.log('Right - Request re-render for disable rigt btn')
           this.setState({
             rightBtn: false,
           })
@@ -90,37 +128,47 @@ class HorizontalList extends React.Component {
     }
   }
 
+  getCardSize(element) {
+    const rigthMarginPx = parseInt(window.getComputedStyle(element.firstChild).marginRight, 10);
+    return rigthMarginPx + element.firstChild.offsetWidth;
+  }
+
+  getNumVisibleCards(element, cardSize) {
+    return element.offsetWidth / cardSize;
+  }
+
+  getExtraSpace(element, cardSize) {
+    return element.offsetWidth % cardSize;
+  }
+
+  getScrollingPx(element) {    
+    const cardSize = this.getCardSize(element);
+    //now: need to calculate the number of VISIBLE pixel in order to calculate how many cards are visible 
+    const numVisibleCards = this.getNumVisibleCards(element, cardSize);    
+    const scrollingPx = cardSize * numVisibleCards - this.getExtraSpace(element, cardSize);
+    return scrollingPx;
+  }
+
   componentDidUpdate() {
+    // 1) need to calculate the size of a card and then move right or left based on that
+
+    //   In order to calculate the proper scrolling: 
+
+    //    - total size of a single card (offsetWidth + margin [border included])
+    //    - divide offsetWidth/total size of single card ---> I get number of items visible
+    //    - scroll by (number of items * total size of single card) [plus/minus]
     console.log('Updated');
     const {scrollWidth} = this.state;
 
-    if(this.navRef.current){
+    if(this.navRef.current && this.navRef.current.firstChild){
       const {current} = this.navRef;
-
-      console.log('--- Total size of the visible section ----');
-      console.log('Section.offsetWidth:', current.offsetWidth)
-
-      console.log('--- Total size of a single card ---');
-      console.log('current.firstChild.offsetWidth + rightMarginPx:');
       
-
       if(scrollWidth !== current.scrollWidth) {
-        let cardSize = 0;
-        let numVisibleCards = 0;
-        let extraSpace = 0;
-        if(current.firstChild) {
-          const rigthMarginPx = parseInt(window.getComputedStyle(current.firstChild).marginRight, 10);
-          cardSize = rigthMarginPx + current.firstChild.offsetWidth;
-          //now: need to calculate the number of VISIBLE pixel in order to calculate how many cards are visible
-          numVisibleCards = (current.offsetWidth / cardSize);
-          extraSpace = (current.offsetWidth % cardSize);
-
-        }
 
         this.setState({
           scrollWidth: current.scrollWidth,
           // scrollingPx: current.offsetLeft + current.firstChild.offsetWidth,
-          scrollingPx: cardSize * numVisibleCards - extraSpace,
+          scrollingPx: this.getScrollingPx(current),
           offsetWidth: current.offsetWidth,
           scrollLeft: current.scrollLeft,
         })
@@ -189,7 +237,7 @@ class HorizontalList extends React.Component {
             <div className='list__top--controls'>
               <button 
                 className={`list__top--btns list__top--btns--left 
-                ${leftBtn ? 'list__top--btns--visible' : 'diomusso'}
+                ${leftBtn ? 'list__top--btns--visible' : ''}
                 `}
                 onClick={event => {this.handleScroll(event, 'left')}}
               >
@@ -198,7 +246,7 @@ class HorizontalList extends React.Component {
 
               <button 
                 className={`list__top--btns list__top--btns--right 
-                ${rightBtn ? 'list__top--btns--visible' : 'diomusso'}
+                ${rightBtn ? 'list__top--btns--visible' : ''}
                 `}
                 onClick={event => {this.handleScroll(event, 'right')}}
               >
@@ -208,28 +256,14 @@ class HorizontalList extends React.Component {
           </div>
         </div>
         <div className='list__container section-grid full'>
-          {/* <button 
-            className={`list__btns list__btns--left full
-            ${leftBtn ? 'list__btns--visible' : 'diomusso'}
-            `}
-            onClick={event => {this.handleScroll(event, 'left')}}
-          >
-            <FontAwesomeIcon icon={faCaretLeft} />
-          </button>             */}
+
           <section 
             className={type === TYPE_CAST || type === TYPE_MEDIA || props.search? 'list__wrapper full' : 'list__wrapper'} 
             ref={this.navRef}
           >
             {cards}
           </section>
-          {/* <button 
-            className={`list__btns list__btns--right full
-            ${rightBtn ? 'list__btns--visible' : 'diomusso'}
-            `}
-            onClick={event => {this.handleScroll(event, 'right')}}
-          >
-            <FontAwesomeIcon icon={faCaretRight} />
-          </button> */}
+
         </div>
       </div>
     )
