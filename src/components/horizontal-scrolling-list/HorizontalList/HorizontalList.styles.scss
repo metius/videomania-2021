@@ -27,8 +27,12 @@
       opacity: .15;
 
       &--visible {
-        opacity: 1;
+        opacity: .65;
         cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
@@ -37,6 +41,24 @@
     position: relative;
   }
 
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    align-items: flex-start;
+
+    scrollbar-width: none;
+
+    // Disable scrollbars
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;  /* Chrome, Safari and Opera */ 
+    }
+  }
+
+  // Old buttons style - keeping for reference
   &__btns {
     height: 85%;
     background-color: rgba(60,60,60,.8);
@@ -68,24 +90,7 @@
       border-bottom-right-radius: 5px;
     }
   }
-
-  &__wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    align-items: flex-start;
-
-    scrollbar-width: none;
-
-    // Disable scrollbars
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-
-    &::-webkit-scrollbar {
-      display: none;  /* Chrome, Safari and Opera */ 
-    }
-
-  }
+  // End old buttons style
 }
 
 @media (max-width: 1200px) and (pointer:coarse){

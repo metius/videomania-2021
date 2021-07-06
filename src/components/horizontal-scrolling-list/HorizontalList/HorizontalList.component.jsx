@@ -29,14 +29,10 @@ class HorizontalList extends React.Component {
   }
 
   handleScroll(e, direction) {
-  // ---> move to componentDidUpdate - this method should "just" handle the scroll
-    e.preventDefault();
-
     const {current} = this.navRef;
     const {leftBtn, rightBtn, scrollWidth, scrollingPx} = this.state;
 
     if(direction === 'left') {
-      console.log("Left")
       //settings default start position as total size of list - probablu not neeeded
       let currentStartPosition = current.offsetWidth;
 
@@ -47,79 +43,40 @@ class HorizontalList extends React.Component {
         })
 
         if(!rightBtn) {
-          console.log('Enable right button')
           this.setState({
             rightBtn: true,
           })
         }
 
         currentStartPosition = current.scrollLeft - scrollingPx;
-        console.log('CurrentSTartPosition: ', currentStartPosition);
-        console.log('Current OffsetWidth', current.offsetWidth);
-        console.log('Current ScrollLeft', current.scrollLeft);
-        console.log('ScrollingPx:', scrollingPx)
-        console.log('Scrollwidth', scrollWidth);
 
         if(currentStartPosition <= 0)
         {
-          console.log('Left - Request re-render for disable left btn')
           this.setState({
             leftBtn: false,
           })
         }
       }
-      
-      // if((current.scrollLeft + current.offsetWidth < scrollWidth) && !rightBtn) 
-      // if((current.scrollLeft + current.offsetWidth < current.scrollWidth) && !rightBtn) 
-      // {
-      //   console.log('Left - Request re-render for enable right btn')
-      //   this.setState({
-      //     rightBtn: true,
-      //   })
-      // }
-
-      // if(current.scrollLeft === 0) 
-      // if(currentStartPosition <= 0)
-      // {
-      //   console.log('Left - Request re-render for disable left btn')
-      //   this.setState({
-      //     leftBtn: false,
-      //   })
-      // }
-      
     } else {
-      console.log("Right")
       let currentEndPosition = 0;
 
-      if(this.navRef) {
-        console.log('Current.ScrollLeft - before scroll', current.scrollLeft);
-        console.log('ScrollingPx:', scrollingPx)
-
+      if(this.navRef) {        
         current.scroll({
           left: current.scrollLeft + scrollingPx,
           behavior: 'smooth'
         })
-        // currentPosition = current.scrollLeft + scrollingPx;
-        currentEndPosition = current.scrollLeft + (scrollingPx*2);
 
-        console.log('Current End Position: ', currentEndPosition);
-        console.log('Current OffsetWidth', current.offsetWidth);
-        console.log('Current ScrollLeft', current.scrollLeft);
-        console.log('Scrollwidth', scrollWidth);
+        currentEndPosition = current.offsetWidth + current.scrollLeft + scrollingPx;
 
-        // if(current.scrollLeft > 0 && !leftBtn) 
         if(!leftBtn) 
         {
-          console.log('Right - Request re-render for enable left btn')
           this.setState({
             leftBtn: true,
           })
         }
 
-        // if(current.scrollLeft + current.offsetWidth === scrollWidth) 
-        if(currentEndPosition >= scrollWidth - this.getCardSize(current)) 
+        if(currentEndPosition >= scrollWidth) 
         {
-          console.log('Right - Request re-render for disable rigt btn')
           this.setState({
             rightBtn: false,
           })
@@ -167,7 +124,6 @@ class HorizontalList extends React.Component {
 
         this.setState({
           scrollWidth: current.scrollWidth,
-          // scrollingPx: current.offsetLeft + current.firstChild.offsetWidth,
           scrollingPx: this.getScrollingPx(current),
           offsetWidth: current.offsetWidth,
           scrollLeft: current.scrollLeft,
@@ -225,9 +181,6 @@ class HorizontalList extends React.Component {
         return; 
     }
 
-    console.log('Render: ', this.state.scrollWidth)
-    console.log('This.ref: ', this.navRef)
-
     return(
       <div className={`list section-grid `} >
         {/* <div className='list__top'> */}
@@ -240,6 +193,7 @@ class HorizontalList extends React.Component {
                 ${leftBtn ? 'list__top--btns--visible' : ''}
                 `}
                 onClick={event => {this.handleScroll(event, 'left')}}
+                disabled={leftBtn ? false : true}
               >
                 <FontAwesomeIcon icon={faChevronLeft} />
               </button> 
@@ -249,6 +203,7 @@ class HorizontalList extends React.Component {
                 ${rightBtn ? 'list__top--btns--visible' : ''}
                 `}
                 onClick={event => {this.handleScroll(event, 'right')}}
+                disabled={rightBtn ? false : true}
               >
                 <FontAwesomeIcon icon={faChevronRight} />
               </button>
