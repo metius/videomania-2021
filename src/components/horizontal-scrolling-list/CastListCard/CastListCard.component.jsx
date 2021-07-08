@@ -1,7 +1,6 @@
 import React from 'react';
 // import {S_PROFILE, M_PROFILE, L_PROFILE} from '../../../utils/tmdb_constants';
-import {S_PROFILE, M_PROFILE, L_PROFILE, ORIGINAL_PROFILE} from '../../../utils/tmdb_constants';
-import {getPicturePath} from '../../../utils/utilities';
+import {S_PROFILE, M_PROFILE} from '../../../utils/tmdb_constants';
 import ListCard from '../ListCard/ListCard.component';
 import {minW320, minW480} from '../../../utils/constants';
 import ResponsiveImages from '../ResponsiveImages/ResponsiveImages.component';

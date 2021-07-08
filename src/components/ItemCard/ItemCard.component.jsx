@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {UserContext} from '../../firebase/UserProvider';
 import {getFavouriteDocument, setFavouriteDocument} from '../../firebase/firebase';
-import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
+import { getYearFromDateString } from '../../utils/utilities';
 import {M_BACKDROP, L_BACKDROP, ORIGINAL_BACKDROP} from '../../utils/tmdb_constants';
 import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST, TYPE_MEDIA } from '../../utils/constants';
 import { minW600, minW801 ,minW1281 } from '../../utils/constants';
