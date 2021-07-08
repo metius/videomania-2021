@@ -3,6 +3,7 @@ import ModalVideo from 'react-modal-video'
 import {getYouTubeThumbsHD} from '../../../utils/utilities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faYoutube} from '@fortawesome/free-brands-svg-icons';
+import {minW480,minW801, minW1025} from '../../../utils/constants';
 
 import './MediaListCard.styles.scss';
 
@@ -23,6 +24,17 @@ class MediaCard extends Component {
     })
   }
 
+  getResponsiveThumb(videoId, name) {
+    return (
+      <picture>
+        <source media={minW1025} srcSet={getYouTubeThumbsHD(videoId, 'maxresdefault')}/>
+        <source media={minW801} srcSet={getYouTubeThumbsHD(videoId, 'sddefault')}/>
+        <source media={minW480} srcSet={getYouTubeThumbsHD(videoId, 'hqdefault')}/>
+        <img src={getYouTubeThumbsHD(videoId, 'hqdefault')} alt={name} className="card__poster card__poster--media" />
+      </picture>
+    )
+  }
+
   render() {
     const videoId = this.props.data.key;
     const name = this.props.data.name;
@@ -30,10 +42,11 @@ class MediaCard extends Component {
     
     // https://appleple.github.io/react-modal-video/
     return(
-      <div className='card'>
+      <div className='card card__media'>
         <ModalVideo channel={site.toLowerCase()} isOpen={this.state.isOpen} videoId={videoId} onClose={() => this.setState({isOpen: false})} />
-        <div className='card__media' onClick={this.openModal}>
-          <img className="card__poster card__poster--media" src={getYouTubeThumbsHD(videoId)} alt={name} />
+        <div className='card__thumbs' onClick={this.openModal}>
+          {/* <img className="card__poster card__poster--media" src={getYouTubeThumbsHD(videoId)} alt={name} /> */}
+          {this.getResponsiveThumb(videoId, name)}
           <div className="card__play-icon">                 
             <FontAwesomeIcon icon={faYoutube} />
           </div>

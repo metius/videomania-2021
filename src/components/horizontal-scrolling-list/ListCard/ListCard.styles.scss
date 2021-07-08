@@ -39,12 +39,13 @@
 
   &__title {
     text-align: center;
-    font-size: .8em;
+    font-size: .8rem;
     /* flex: 1; */
   }
 
   &__name {
-    font-size: .6em;
+    font-size: .7rem;
+    max-width: 100%;
   }
 
   &__cast {
@@ -78,8 +79,9 @@
       padding-top: 100%;
     }
   }
+  
 
-  &__media {
+  &__thumbs {
     cursor: pointer;
 
     & img {
@@ -96,3 +98,41 @@
 
 }
 
+//need to add media query in order to adjust the size of the CAST person name
+
+@media (min-width:480px) { 
+  /* smartphones, Android phones, landscape iPhone */ 
+  .card__media {
+    max-width: 9rem;
+  }
+
+  .card__cast {
+    max-width: 5em;
+  }
+}
+@media (min-width:600px) { 
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ 
+  .card__media {
+    max-width: 10rem;
+  }
+
+  .card__cast {
+    max-width: 6em;
+  }
+}
+@media (min-width:801px) { 
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .card__media {
+    max-width: 12rem;
+  }
+
+  .card__cast {
+    max-width: 7em;
+  }
+}
+
+@media (min-width:1025px) { 
+  .card__media {
+    max-width: 14rem;
+  }
+}

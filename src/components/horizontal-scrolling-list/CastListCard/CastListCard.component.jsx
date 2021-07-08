@@ -1,13 +1,33 @@
 import React from 'react';
 // import {S_PROFILE, M_PROFILE, L_PROFILE} from '../../../utils/tmdb_constants';
-import {S_PROFILE} from '../../../utils/tmdb_constants';
+import {S_PROFILE, M_PROFILE, L_PROFILE, ORIGINAL_PROFILE} from '../../../utils/tmdb_constants';
 import {getPicturePath} from '../../../utils/utilities';
 import ListCard from '../ListCard/ListCard.component';
+import {minW320, minW480} from '../../../utils/constants';
+import ResponsiveImages from '../ResponsiveImages/ResponsiveImages.component';
 
 const CastListCard = ({data, type}) => {
   
+  const sizeArray = [
+    {
+      mediaQuery: minW480,
+      imgSize: M_PROFILE
+    },
+    {
+      mediaQuery: minW320,
+      imgSize: S_PROFILE
+    },
+  ];
+
+  const picture = 
+    <ResponsiveImages 
+      imgPath={data.profile_path} 
+      altDesc={data.title} 
+      defaultSize={S_PROFILE} 
+      sizeArray={sizeArray}
+    />;
+
   if(data.profile_path === null) {
-    //console.table(data);
     return(
 
       <ListCard type={type} data={data}>
@@ -22,7 +42,8 @@ const CastListCard = ({data, type}) => {
   } else {
     return(
       <ListCard type={type} data={data} >
-        <img className="card__poster" src={getPicturePath(data.profile_path, S_PROFILE)} alt={data.title} />
+        {/* <img className="card__poster" src={getPicturePath(data.profile_path, M_PROFILE)} alt={data.title} /> */}
+        {picture}
         <h4 className='card__name'>{data.name}</h4>
       </ListCard>
     )

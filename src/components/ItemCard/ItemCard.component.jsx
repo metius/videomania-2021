@@ -3,12 +3,13 @@ import {withRouter} from 'react-router-dom';
 import {UserContext} from '../../firebase/UserProvider';
 import {getFavouriteDocument, setFavouriteDocument} from '../../firebase/firebase';
 import { getPicturePath, getYearFromDateString } from '../../utils/utilities';
-import {M_BACKDROP} from '../../utils/tmdb_constants';
-// import {S_BACKDROP, L_BACKDROP} from '../../utils/tmdb_constants';
+import {M_BACKDROP, L_BACKDROP, ORIGINAL_BACKDROP} from '../../utils/tmdb_constants';
 import { TYPE_MOVIE, TYPE_TVSHOW, TYPE_CAST, TYPE_MEDIA } from '../../utils/constants';
+import { minW600, minW801 ,minW1281 } from '../../utils/constants';
 import StarIcon from '../StarIcon/StarIcon.component';
 import HorizontalList from '../horizontal-scrolling-list/HorizontalList/HorizontalList.component';
 import './ItemCard.styles.scss';
+import ResponsiveImages from '../horizontal-scrolling-list/ResponsiveImages/ResponsiveImages.component';
 
 class ItemCard extends Component {
 
@@ -90,14 +91,9 @@ class ItemCard extends Component {
       
     if(data.length === 0) return null;
 
-    const backdropImg = getPicturePath(data.backdrop_path, M_BACKDROP);
-
     let title;
     let runtime;
     let releaseYear;
-
-    // console.table(`Data fetched: ${JSON.stringify(data)}`);
-    console.log("Reccomended:", data.recommendations)
 
 
     if( type === TYPE_MOVIE) {
@@ -114,35 +110,62 @@ class ItemCard extends Component {
       runtime = 0;
       releaseYear = '---';
     }
+
+    const sizeArray = [
+      {
+        mediaQuery: minW1281,
+        imgSize: ORIGINAL_BACKDROP
+      },
+      {
+        mediaQuery: minW801,
+        imgSize: L_BACKDROP
+      },
+      {
+        mediaQuery: minW600,
+        imgSize: M_BACKDROP
+      },
+    ]
+    const picture = 
+      <ResponsiveImages 
+        imgPath={data.backdrop_path} 
+        altDesc={data.name} 
+        defaultSize={M_BACKDROP} 
+        sizeArray={sizeArray}
+        cssClass='item-page__img'
+    />;
     
     return(
       <article className="item-page">
-        <div className="item-page__header img-shadow">
-          <img src={backdropImg} alt={data.name} className="item-page__img " />
-          <div 
-            className="card-favourite" 
-            onClick={this.setFavourite}
-          >
-            <StarIcon isFavourite={isFavourite} />
+        <div className='item-page__flex'>
+          <div className="item-page__header img-shadow">
+            {picture}
+            <div 
+              className="card-favourite" 
+              onClick={this.setFavourite}
+            >
+              <StarIcon isFavourite={isFavourite} />
+            </div>
+            <div className="item-page__title-box">
+              <h2 className="item-page__title">{title}</h2>
+            </div>
           </div>
-          <div className="item-page__title-box">
-            <h2 className="item-page__title">{title}</h2>
+      
+          <div className="item-page__flex-info section-grid">
+            <div className="item-page__info">
+              <span>{`${data.vote_average}/10`}</span>
+              <span>{`${runtime} min`}</span>
+              <span>{`${releaseYear}`}</span>          
+            </div>
+
+            <div className="item-page__overview">
+              {/* <h2 className="section-title">Overview</h2> */}
+              <h2 className="item-page__overview--title">Overview</h2>
+              <p>{data.overview}</p>
+            </div>
           </div>
         </div>
-      
+
         <div className="item-page__main section-grid">
-          <div className="item-page__info">
-            <span>{`${data.vote_average}/10`}</span>
-            <span>{`${runtime} min`}</span>
-            <span>{`${releaseYear}`}</span>          
-          </div>
-
-          <div className="item-page__overview">
-            {/* <h2 className="section-title">Overview</h2> */}
-            <h2 className="item-page__overview--title">Overview</h2>
-            <p>{data.overview}</p>
-          </div>
-
           {/* //Cast list */}
           <HorizontalList data={data.credits.cast} title='Cast' type={TYPE_CAST} />
 

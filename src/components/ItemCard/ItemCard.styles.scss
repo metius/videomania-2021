@@ -1,9 +1,9 @@
 // to see if applicable or not - leave it for now 
 
 .item-page {
-
+  
   &__header {
-    // position: relative;
+    text-align: left;
   }
 
   &__img {
@@ -11,6 +11,7 @@
     background-size: contain;    
     position: relative;
     display: block;
+    margin: 0 auto;
   }
 
   &__title-box {
@@ -55,3 +56,16 @@
     }
   }
 }
+
+// @media (min-width:1281px) {
+//   .item-page__flex {
+//     display: flex;
+//   }
+
+//   .item-page__header {
+//     flex: 4 1 60%;
+//   }
+//   .item-page__flex-info {
+//     flex: 1 1 40%;
+//   }
+// }
