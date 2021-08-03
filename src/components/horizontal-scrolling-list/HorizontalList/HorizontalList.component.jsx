@@ -106,6 +106,10 @@ class HorizontalList extends React.Component {
     return scrollingPx;
   }
 
+  filterListNoImg(list) {
+    return list.filter(item => item.poster_path != null);
+  }
+
   componentDidUpdate() {
     // 1) need to calculate the size of a card and then move right or left based on that
 
@@ -163,13 +167,14 @@ class HorizontalList extends React.Component {
     const title = props.title;
   
     let cards;
+    // console.table(list)
   
     switch(type) {
       case TYPE_MOVIE:
-        cards = list.map(item => <MovieListCard data={item} key={item.id} type={type} />);
+        cards = this.filterListNoImg(list).map(item => <MovieListCard data={item} key={item.id} type={type} />);
         break;
       case TYPE_TVSHOW:
-        cards = list.map(item => <TvListCard data={item} key={item.id} type={type} />);
+        cards = this.filterListNoImg(list).map(item => <TvListCard data={item} key={item.id} type={type} />);
         break;
       case TYPE_CAST:
         cards = props.data.map(item => <CastListCard data={item} key={item.id} type={type} />);
