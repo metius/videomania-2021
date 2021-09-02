@@ -1,0 +1,28 @@
+.cast-page {
+
+  &__header {
+
+  }
+
+  &__profile-pic {
+    max-width: 100%;
+    height: auto;
+    background-size: contain;    
+    position: relative;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__socials {}
+
+  &__personal-info {}
+
+  &__biography {}
+
+  &__credits {
+
+    &--movies {}
+
+    &--tv-shows {}
+  }
+}
