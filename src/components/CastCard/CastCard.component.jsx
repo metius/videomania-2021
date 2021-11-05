@@ -1,7 +1,9 @@
 import React from 'react';
 import ResponsiveImages from '../horizontal-scrolling-list/ResponsiveImages/ResponsiveImages.component';
-import { S_PROFILE, M_PROFILE, L_PROFILE, ORIGINAL_PROFILE} from '../../utils/tmdb_constants';
-import { minW480, minW600, minW801, minW1025} from '../../utils/constants';
+// import { S_PROFILE, M_PROFILE, L_PROFILE, ORIGINAL_PROFILE} from '../../utils/tmdb_constants';
+import { M_PROFILE, L_PROFILE} from '../../utils/tmdb_constants';
+// import { minW480, minW600, minW801, minW1025} from '../../utils/constants';
+import { minW600, minW801} from '../../utils/constants';
 import './CastCard.styles.scss';
 
 const CastCard = ({data}) => {
@@ -26,21 +28,21 @@ const CastCard = ({data}) => {
     // },
   ]
 
-  const picture = 
-    <ResponsiveImages 
-      imgPath={data.profile_path} 
-      altDesc={data.name} 
-      defaultSize={M_PROFILE} 
+  const picture =
+    <ResponsiveImages
+      imgPath={data.profile_path}
+      altDesc={data.name}
+      defaultSize={M_PROFILE}
       sizeArray={sizeArray}
       cssClass='cast-page__profile-pic'
   />;
 
   return(
     <article className="cast-page">
-      <div className="cast-page__header">        
-        {picture}        
+      <div className="cast-page__header">
+        {picture}
         <div className="cast-page__socials">
-          
+
         </div>
       </div>
       <div className="cast-page__personal-info"></div>
